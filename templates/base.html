@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport"content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}{% endblock %}</title>
+		<!-- Favicon -->
+		<link rel="icon"href="{% static 'assets/images/favicon.png' %}"sizes="16x16" />
+		<!-- Bootstrap -->
+		<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet"  type="text/css"/>
+		<!-- icon -->
+		<link href="{% static 'assets/css/fontawsome.min.css' %}" rel="stylesheet" type="text/css"/>
+		<!-- Owl-Slider -->
+		<link  href="{% static 'assets/css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'assets/css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css"/>
+		<!--  Aos_Animation -->
+		<!--<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">-->
+		<!--  My_Styles -->
+		<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css"/>
+		<link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css"/>
+		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		<!-- add sweet alart -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css">
+		<style>
+			.tdStyle
+			{
+			background-image:url('{{ STATIC_URL }}images/sample.JPG');
+			background-repeat:no-repeat;
+			background-size:100%;
+			}
+		</style>
+
+
+		
+	</head>
+	
+
+	<body>
+		<header class="theame-header fixed-top">
+			<section class="tp-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="tp-heade-rgt text-end">
+								<ul class="tp-header-list">
+									<li>
+										<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#filter"><i class="far fa-filter"></i></a>
+									</li>
+									<li>
+										<a href="/comprassion/"><i class="fas fa-sliders-h"></i></a>
+									</li>
+									<li>
+										<a href="/favorite/"><i class="far fa-bookmark"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand"href="/">
+						<img src="{% static 'assets/images/logo.png' %}"alt="">
+					</a>
+					<button class="navbar-toggler"type="button"data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent"aria-expanded="false"aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+					</button>
+					<div class="collapse navbar-collapse"id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto">
+							<li class="nav-item">
+								<a href="/buy_properties/" class="nav-link {% if request.path == '/buy_properties/' %}active{% endif %} ">Buy</a>
+							</li>
+							<li class="nav-item">
+								<a href="/sell_properties/" class="nav-link {% if request.path == '/sell_properties/' %}active{% endif %} ">Sell</a>
+							</li>
+							<li class="nav-item">
+								<a href="/rent_properties/" class="nav-link {% if request.path == '/rent_properties/' %}active{% endif %} ">Rent</a>
+							</li>
+							<li class="nav-item">
+								<a href="/off_plane/" class="nav-link {% if request.path == '/off_plane/' %}active{% endif %} ">Off Plan</a>
+							</li>
+							<li class="nav-item">
+								<a href="/our_team/" class="nav-link {% if request.path == '/our_team/' %}active{% endif %} ">Our team</a>
+							</li>
+							<li class="nav-item">
+								<a href="/who_we_are/" class="nav-link {% if request.path == '/who_we_are/' %}active{% endif %} ">Who we are</a>
+							</li>
+							<li class="nav-item">
+								<a href="/contact/" class="nav-link {% if request.path == '/contact/' %}active{% endif %} ">Contact us</a>
+							</li>
+							<!--<li class="nav-item">-->
+							<!--	<a href="/agents/" class="nav-link {% if request.path == '/agents/' %}active{% endif %} ">Agents</a>-->
+							<!--</li>-->
+							<!--<li class="nav-item">
+								<a href="/blog/" class="nav-link {% if request.path == '/blog/' %}active{% endif %}">Blog</a>
+							</li>-->
+							<!--<li class="nav-item">
+								<a href="/news/" class="nav-link {% if request.path == '/news/' %}active{% endif %}">News</a>
+							</li>-->
+						</ul>
+						<div class="nav-btn">
+							<ul>
+								<li class="nav-btn-list">
+									<select name="" id="" class="form-control">
+										<option selected>EN</option>
+										<option value="">RU</option>
+										<option value="">ES</option>
+										<option value="">FR</option>
+										<option value="">RO</option>
+									</select>
+								</li>
+								<li class="nav-btn-list">
+									<!-- <a href="#"></a> -->
+									<a href="" id="menu" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="fab fa-whatsapp me-2"></i>Follow Us
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="menu">
+										<li><a class="dropdown-item" href="https://www.facebook.com/your_facebook_username"><i class="fab fa-facebook-f me-2"></i>Facebook</a></li>
+										<li><a class="dropdown-item" href="https://twitter.com/your_twitter_username"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
+										<li><a class="dropdown-item" href="https://www.instagram.com/your_instagram_username/"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
+										<li><a class="dropdown-item" href="https://www.youtube.com/user/your_youtube_channel"><i class="fab fa-youtube me-2"></i>Youtube</a></li>
+										<li><a class="dropdown-item" href="tg://resolve?domain=your_telegram_username"><i class="fab fa-telegram-plane me-2"></i>Telegram</a></li>
+									</ul>
+								</li>
+								<li class="nav-btn-list"><a href="tel:042563962"><i class="fal fa-phone fa-rotate-90 me-2"></i>Call Us</a></li>
+								<li class="nav-btn-list"><a href="/comprassion/"><i class="fas fa-sliders-h"></i></a></li>
+								<li class="nav-btn-list"><a href="/favorite/"><i class="far fa-bookmark"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!--<div class="container-fluid header-filter">-->
+			<!--	<form method="get" action="/searchproperties/">-->
+			<!--		<div class="row align-items-center g-0">-->
+			<!--			<div class="col-xl-2 col-lg-2 col-md-2 frm-bx">-->
+			<!--				<input type="text" class="form-control" autocomplete="off" name="location" value="{{form.location.value}}" placeholder="Properties or locations">-->
+			<!--				<span class="far fa-search"></span>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-2 col-lg-2 col-md-2 frm-bx">-->
+			<!--				<select name = "rent"  class="form-select" >-->
+			<!--					<option value="">Rent Buy</option>-->
+			<!--					<option {% if form.rent.value == "Rent" %} selected='selected' {% endif %} value='Rent'>Rent</option>-->
+			<!--					<option {% if form.rent.value == "Buy" %} selected='selected' {% endif %} value='Buy'>Buy</option>-->
+			<!--					<option {% if form.rent.value == "Sell" %} selected='selected' {% endif %} value='Sell'>Sell</option>-->
+			<!--				</select>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-2 col-lg-2 col-md-2 frm-bx">-->
+			<!--				<select class="form-select" name="property_type">-->
+			<!--					<option value="">Property Type</option>-->
+			<!--					<option {% if form.property_type.value == "Apartments" %} selected='selected' {% endif %} value='Apartments'>Apartments</option>-->
+			<!--					<option {% if form.property_type.value == "villa" %} selected='selected' {% endif %} value='villa'>villa</option>-->
+			<!--					<option {% if form.property_type.value == "Penthouses" %} selected='selected' {% endif %} value='Penthouses'>Penthouses</option>-->
+			<!--					<option {% if form.property_type.value == "Townhouses" %} selected='selected' {% endif %} value='Townhouses'>Townhouses</option>-->
+			<!--					<option {% if form.property_type.value == "Duplexes" %} selected='selected' {% endif %} value='Duplexes'>Duplexes</option>-->
+			<!--					<option {% if form.property_type.value == "Plots" %} selected='selected' {% endif %} value='Plots'>Plots</option>-->
+			<!--					<option {% if form.property_type.value == "Offices" %} selected='selected' {% endif %} value='Offices'>Offices</option>-->
+			<!--				</select>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-2 col-lg-2 col-md-2 frm-bx">-->
+							
+			<!--				<select class="form-select" name ="bedrooms">-->
+			<!--					<option value="" > {{form.bedrooms.value}} Bedrooms</option>-->
+			<!--					<option {% if form.bedrooms.value == 1 %} selected="selected" {% endif %} value="1">1</option>-->
+			<!--					<option {% if form.bedrooms.value == 2 %} selected="selected" {% endif %} value="2">2</option>-->
+			<!--					<option {% if form.bedrooms.value == 3 %} selected="selected" {% endif %} value="3">3</option>-->
+			<!--					<option {% if form.bedrooms.value == 4 %} selected="selected" {% endif %} value="4">4</option>-->
+			<!--					<option {% if form.bedrooms.value == 5 %} selected="selected" {% endif %} value="5">5</option>-->
+			<!--					<option {% if form.bedrooms.value == 6 %} selected="selected" {% endif %} value="6">6</option>-->
+			<!--					<option {% if form.bedrooms.value == 7 %} selected="selected" {% endif %} value="7">7</option>-->
+			<!--					<option {% if form.bedrooms.value == 8 %} selected="selected" {% endif %} value="8">8</option>-->
+			<!--					<option {% if form.bedrooms.value == 9 %} selected="selected" {% endif %} value="9">9</option>-->
+			<!--					<option {% if form.bedrooms.value == 10 %} selected="selected" {% endif %} value="10">10</option>-->
+			<!--				</select>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-2 col-lg-2 col-md-2 frm-bx price">-->
+			<!--				<input type="text" class="form-control" autocomplete="off"  placeholder="  AED  {{form.min_price.value}} - {{form.max_price.value}}" id="price-filter">-->
+			<!--				<div class="price-filter" id="price-box">-->
+			<!--					<div class="row g-1">-->
+			<!--						<div class="col-lg-6">-->
+			<!--							<input type="text" name="min_price" value="{{form.min_price.value}}" class="form-control value_bx" placeholder="minimum">-->
+			<!--						</div>-->
+			<!--						<div class="col-lg-6">-->
+			<!--							<input type="text" name="max_price" value="{{form.max_price.value}}" class="form-control value_bx" placeholder="maximum">-->
+			<!--						</div>-->
+			<!--					</div>-->
+			<!--				</div>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-1 col-lg-1 col-md-1 frm-bx">-->
+			<!--				<button class="search-btn" type="search">Search</button>-->
+			<!--			</div>-->
+			<!--			<div class="col-xl-1 col-lg-1 col-md-1 frm-bx">-->
+			<!--				<div class="fltr-btn">-->
+			<!--					<a href="/comprassion/" class="form-icn"><i class="fas fa-sliders-h"></i></a>-->
+			<!--					<a href="/favorite/" class="form-icn"><i class="far fa-bookmark"></i></a>-->
+			<!--				</div>-->
+			<!--			</div>-->
+			<!--		</div>-->
+			<!--	</form>-->
+			<!--</div>-->
+		</header>
+		
+		{% block body %}
+		{% endblock body %}
+		
+		<footer class="thm-footer tp-space">
+			<div class="container">
+				<div class="heading new-head">
+				</div>
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-sm-12">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<ul class="ftr-lnk">
+									<!--<li><a href="/allpartner/">Partners</a></li>-->
+									<!--<li><a href="/news/">News</a></li>-->
+									<li><a href="/our_team/">Our Team</a></li>
+									<!--<li><a href="/properties/">Projects</a></li>-->
+									<li><a href="/buy_properties/">Buy</a></li>
+									<li><a href="/rent_properties/">Rent</a></li>
+									<li><a href="/off_plane/">Off Plan</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<ul class="ftr-lnk">
+									<li><a href="/apartment_properties/">Apartments</a></li>
+									<li><a href="/panthouse_properties/">Penthouses</a></li>
+									<li><a href="/townhouse_properties/">Townhouses</a></li>
+									<li><a href="/villa_properties/">Villas</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<ul class="ftr-lnk">
+									<li><a href="/who_we_are/">Who We Are </a></li>
+									<li><a href="/contact/">Contact Us</a></li>
+									<li><a href="/review/">Reviews</a></li>
+									<li><a href="/blog/">News & Blogs</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7 col-md-6 col-sm-12">
+						<div class="ftr-contact text-end tp-header-lft">
+							<h4>Address</h4>
+							<p>Office 104,1st Floor, <br />Sobha Sapphire, Business Bay, Dubai</p>
+							<ul>
+								<li>
+									<a href="https://www.instagram.com/your_instagram_username/"><i class="fab fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="javascript:void(0);"><i class="fab fa-telegram-plane"></i></a>
+								</li>
+								<li>
+									<a href="https://twitter.com/your_twitter_username"><i class="fab fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="https://www.youtube.com/user/your_youtube_channel"><i class="fab fa-youtube"></i></a>
+								</li>
+								<li>
+									<a href="https://www.facebook.com/your_facebook_username"><i class="fab fa-facebook-f"></i></a>
+								</li>
+							</ul>
+							<a href="tel:042563962" class="ftr-btn">Call Us</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<section class="copyright">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<p class="text-white mb-0">Super Moda Real estate ©2023 All Rights Reserved</p>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 text-end">
+							<ul class="copyright-lnk">
+								<li><a href="/term_condition/">Terms and conditions </a></li>
+								<li><a href="/privacy_policy/">privacy policy</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="fx-icon">
+				<a href="https://wa.me/1234567890" class="fx-icon-whatsapp">
+					<i class="fab fa-whatsapp"></i></a>
+			</div>
+		</footer>
+		<div class="modal fade filter-modal" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Filter</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form method="get" action="/searchproperties/" class="row filter-frm">
+							<div class="col-lg-12 mb-4 frm-bx">
+								<label for="">Search</label>
+								<input type="text" class="form-control" name="location" value="{{form.location.value}}" placeholder="Properties or locations">
+								
+							</div>
+							<div class="col-lg-6 col-md-4 col-sm-6 mb-4 frm-bx">
+								<label for="">Purchase</label>
+								<select name = "rent"  class="form-select" >
+									<option value="">Rent Buy</option>
+									<option {% if form.rent.value == "Rent" %} selected='selected' {% endif %} value='Rent'>Rent</option>
+									<option {% if form.rent.value == "Buy" %} selected='selected' {% endif %} value='Buy'>Buy</option>
+								</select>
+							</div>
+							<div class="col-lg-6 col-md-4 col-sm-6 mb-4 frm-bx">
+								<label for="">Property Type</label>
+								<select class="form-select" name="property_type">
+									<option value="">Property Type</option>
+									<option {% if form.property_type.value == "Apartments" %} selected='selected' {% endif %} value='Apartments'>Apartments</option>
+									<option {% if form.property_type.value == "villa" %} selected='selected' {% endif %} value='villa'>villa</option>
+									<option {% if form.property_type.value == "Penthouses" %} selected='selected' {% endif %} value='Penthouses'>Penthouses</option>
+									<option {% if form.property_type.value == "Townhouses" %} selected='selected' {% endif %} value='Townhouses'>Townhouses</option>
+									
+								</select>
+							</div>
+							<div class="col-lg-6 col-md-4 col-sm-6 mb-4 frm-bx">
+								<label for="">Bedrooms</label>
+								<select class="form-select" name ="bedrooms">
+									<option value="" selected> Bedrooms</option>
+									<option {% if form.bedrooms.value == 1 %} selected="selected" {% endif %} value="1">1</option>
+									<option {% if form.bedrooms.value == 2 %} selected="selected" {% endif %} value="2">2</option>
+									<option {% if form.bedrooms.value == 3 %} selected="selected" {% endif %} value="3">3</option>
+									<option {% if form.bedrooms.value == 4 %} selected="selected" {% endif %} value="4">4</option>
+									<option {% if form.bedrooms.value == 5 %} selected="selected" {% endif %} value="5">5</option>
+									<option {% if form.bedrooms.value == 6 %} selected="selected" {% endif %} value="6">6</option>
+									<option {% if form.bedrooms.value == 7 %} selected="selected" {% endif %} value="7">7</option>
+									<option {% if form.bedrooms.value == 8 %} selected="selected" {% endif %} value="8">8</option>
+									<option {% if form.bedrooms.value == 9 %} selected="selected" {% endif %} value="9">9</option>
+									<option {% if form.bedrooms.value == 10 %} selected="selected" {% endif %} value="10">10</option>
+								</select>
+							</div>
+							<div class="col-lg-6 col-md-4 col-sm-6 mb-4 frm-bx">
+								<label for="">Price(INR)</label>
+								<!-- <input type="text" class="form-control" placeholder="  Price(INR) {{form.min_price.value}} to {{form.max_price.value}}" id="price-filter"> -->
+								<div class="row g-1">
+									<div class="col-lg-6">
+										<input type="text" name="min_price" value="{{form.min_price.value}}" class="form-control value_bx" placeholder="minimum">
+									</div>
+									<div class="col-lg-6">
+										<input type="text" name="max_price" value="{{form.max_price.value}}" class="form-control value_bx" placeholder="maximum">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 text-center">
+								<button class="thm-btn w-50">Search</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Jquery -->
+		<script type="text/javascript" src="{% static 'assets/js/jquery-3.6.0.js' %}"></script>
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		<!-- Owl-Carousel -->
+		<script type="text/javascript" src="{% static 'assets/js/owl.carousel.js' %}"></script>
+		<!-- Custom -->
+		<script type="text/javascript" src="{% static 'assets/js/form.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/script.js' %}"></script>
+		<!-- Aos_Animation  -->
+		<!--<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>-->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<!-- add sweet alart  -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.all.min.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$('.star').on('click', function() {
+		// Get the value you want to set
+		var rating = $(this).data('value');
+		// Set the value of the hidden field by ID
+		$('#rating').val(rating);
+		});
+			$('.ab').on('click', function() {
+		// Get the value you want to set
+		var date = $(this).data('value');
+		// Set the value of the hidden field by ID
+		$('#bookdate').val(date);
+		});
+			
+		
+			$('#currencyrate').on('change', function() {
+		var currency = $(this).val()
+				var id = $(this).data('id')
+		console.log(currency)
+				console.log(id)
+				var csrftoken = Cookies.get('csrftoken');
+				
+		$.ajax({
+		url: '/currency_convert/'+id ,
+		method: 'POST',
+					dataType: "json",
+					data: {'currency': currency},
+					headers: {
+						"X-Requested-With": "XMLHttpRequest",
+						"X-CSRFToken":csrftoken,  // don't forget to include the 'getCookie' function
+					},
+		
+		success: function(response) {
+						$('#crate').html( response.target_currency  + ' ' + response.convet_rate);
+		
+		}
+		});
+		});
+		});
+		$(document).ready(function() {
+		var defaultCurrency = 'AED';
+		$('#currencyrate').val(defaultCurrency).change();
+		});
+		
+		
+		
+		</script>
+	
+	</body>
+</html>

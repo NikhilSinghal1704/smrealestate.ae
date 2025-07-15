@@ -1,0 +1,645 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Properties-Details{% endblock %}</title>
+{% block body %}
+
+
+
+<div class="page-body">
+    <div class="container-fluid">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Properties Management</h3>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+              <li class="breadcrumb-item">Properties Management</li>
+              <li class="breadcrumb-item active">Add Properties</li>
+            </ol>
+          </div>
+          <div class="col-sm-6">
+            <!-- Bookmark Start-->
+            <!-- <div class="bookmark">
+              <ul>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                  <form class="form-inline search-form">
+                    <div class="form-group form-control-search">
+                      <input type="text" placeholder="Search..">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div> -->
+            <!-- Bookmark Ends-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5>Properties Management</h5>
+            </div>
+            <div class="card-body">
+              <form class="needs-validation" action="" method="post" novalidate=""  enctype="multipart/form-data">
+                
+                {% csrf_token %}
+               
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_name">title</label>
+                    <input class="form-control" type="text"  name="title" disabled  value="{{object.title}}" maxlength="155" required id="id_name">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_position">property_location</label>
+                    <input class="form-control" type="text"  name="property_location" disabled value="{{object.property_location}}"  maxlength="155" required id="id_position">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_total_area">total_area</label>
+                    <input class="form-control" type="number" name="total_area" disabled value="{{object.total_area}}" required id="id_total_area">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_specialization">property_type</label>
+                    <select name = "property_type"  class="form-select" disabled  required id="id_specialization">
+                      
+                      <option {% if object.property_type == "Apartments" %} selected='selected' {% endif %} value='Apartments'>Apartments</option>                  
+                      <option {% if object.property_type == "villa" %} selected='selected' {% endif %} value='villa'>villa</option>                  
+                      <option {% if object.property_type == "Penthouses" %} selected='selected' {% endif %} value='Penthouses'>Penthouses</option>
+                      <option {% if object.property_type == "Townhouses" %} selected='selected' {% endif %} value='Townhouses'>Townhouses</option>
+                      <option {% if object.property_type == "Duplexes" %} selected='selected' {% endif %} value='Duplexes'>Duplexes</option>                  
+                      <option {% if object.property_type == "Plots" %} selected='selected' {% endif %} value='Plots'>Plots</option>
+                      <option {% if object.property_type == "Offices" %} selected='selected' {% endif %} value='Offices'>Offices</option>
+                  </select>
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_language">Rate</label>
+                    <input class="form-control" type="number"  name="rate" disabled value="{{object.rate}}" maxlength="155" required id="id_language">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+                  
+  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_bedroom">Bedroom</label> 
+                    <input class="form-control" type="number"  name="bedroom" disabled value="{{object.bedroom}}" maxlength="155" required id="id_bedroom">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_bedroom">Bathroom</label> 
+                    <input class="form-control" type="number"  name="bathroom" disabled value="{{object.bathroom}}" maxlength="155" required id="id_bedroom">
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_">Rent/Buy</label>
+                    <select name = "rent" disabled  class="form-select">
+                      <option {% if object.rent == "Buy" %} selected='selected' {% endif %} value='Buy'>Buy</option>
+                      <option {% if object.rent == "Rent" %} selected='selected' {% endif %} value='Rent'>Rent</option>
+                      <option {% if object.rent == "Sell" %} selected='selected' {% endif %} value='Sell'>Sell</option>
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_">Status</label>
+                    <select name = "status" disabled   class="form-select">
+                      <option {% if object.status == 1 %} selected='selected' {% endif %} value='1'>Active</option>
+                        <option {% if object.status == 0 %}selected='selected' {% endif %} value='0'>Inactive</option>
+                      
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_">Assign Agents</label>
+                    <select name = "assign_agents" disabled  class="form-select">
+                        {{agents}}
+                      {% for x in agents %}
+                      <option {% if object.assign_agents == x.pk %} selected='selected' {% endif %} value='x.pk'>{{x.name}}</option>
+                      <!-- <option value="{{x.pk}}">{{x.name}}</option> -->
+                      {% endfor %}
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+  
+                  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_photo">Properties Image</label>
+                    <input class="form-control" disabled type="file" name="photo"  id="id_photo">
+                    {% for x in pro_images %}
+                        <img class="form-control img-100" src="{{x.photo.url}}" alt="{{ x.photo }} Image"><br>
+                    {% endfor %}
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label class="form-label" for="id_photo">properties Image</label>
+                    <input class="form-control" type="file" name="display_images"  id="id_photo">
+                    {% if object.display_images %}
+                    <img class="form-control img-100" src="{{ object.display_images.url }}" alt="{{ object.display_images }} Image"><br>
+                    {% endif %}
+                    <div class="valid-feedback">Looks good!</div>
+                 </div>
+
+                  <div class="col-md-6 ">
+                    <label class="col-form-label">Indoor</label>
+                    <fieldset>
+                      {% for choice in form.fields.indoor.choices %}
+                      <input  type="checkbox" class="" value="{{ choice.0 }}" disabled  name="indoor"
+                      {% if choice.0 in list_indoor   %} checked='checked' {% endif %} />
+                      <label class="form-label" for="">{{ choice.1 }} {{ choice.0 }}</label><br>
+                      {% endfor %}   
+  
+                  </fieldset>
+                  </div>
+  
+                  <div class="col-md-6 ">
+                    <label class="col-form-label">Outdoor{{list_indoor}}</label>
+                    <fieldset>
+                      
+                      {% for choice in form.fields.outdoor.choices %}
+                      
+                      <input type="checkbox" class="" value="{{ choice.0 }}" disabled  name="outdoor"
+                      {% if choice.0 in list_outdoor  %} checked='checked' {% endif %}/>  
+                      <label class="form-label" for="">{{ choice.1 }}</label><br>
+                      
+                      {% endfor %}
+                  </fieldset>
+                  </div>
+  
+                  <div class="col-md-6 ">
+                    <label class="col-form-label">Lot</label>
+                    <fieldset>
+                      {% for choice in form.fields.lot.choices %}
+                      <input type="checkbox" class="" value="{{ choice.0 }}" disabled  name="lot"
+                      {% if choice.0 in list_lot  %} checked='checked' {% endif %} />
+                      <label class="form-label" for="">{{ choice.1 }}</label><br>
+                      {% endfor %}                         
+                  </fieldset>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <label class="form-label" for="id_desc">Description</label>
+                    <textarea cols="30" rows="10" class="form-control" disabled name="desc" required id="id_desc">{{object.desc}}</textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                  </div>
+  
+  
+                 
+                
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid Ends-->
+  </div>
+
+
+
+    <!-- <section class="space mn-h bkng">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="property-dtl">
+                        <div class="property-gllery">
+                            <div class="row g-2">
+                                <div class="col-lg-6 col-md-6 col-sm-6 frst-img">
+                                    <img src="{{properties.photo.url}}" alt="">
+                                    <img src="{{properties.photo.url}}" alt="">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="owl-carousel owl-theme gallery-slider" id="gallery-slider">
+                                        <div class="item">
+                                            <img src="{{properties.photo.url}}" alt="" class="w-100">
+                                        </div>
+                                        <div class="item">
+                                            <img src="{{properties.photo.url}}" alt="" class="w-100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="property-nme">{{properties.title}}</h4>
+                        <div class="property-filter">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-6 col-sm-6 col-12">
+                                    <div class="property-filter-lft">
+                                        <h5>INR {{properties.rate}}</h5>
+                                        <div>
+                                            <select name="" id="" class="form-select">
+                                                <option value="">EUR</option>
+                                                <option value="">AUD</option>
+                                                <option value="">INR</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-end">
+                                    <div class="property-filter-icon">
+                                        <a href="https://wa.me/1234567890"><i class="fas fa-share-alt"></i></a>  
+                                        <a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{properties.pk}}"><i class="fas fa-sliders-h"></i></a>
+                                        <a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{properties.pk}}" ><i class="far fa-bookmark"></i></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properti-amenties dble-brdr">
+                            <div class="row justify-content-between">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-12">
+                                    <ul class="properti-amenties-lft">
+                                        <li> <p><i class="fas fa-map-marker-alt me-2"></i>{{properties.property_location}}</p> </li>
+                                        <li> <p><i class="far fa-bed me-2"></i>{{properties.bedroom}}</p> </li>
+                                        <li> <p><i class="fal fa-mug-hot me-2"></i>8</p> </li>
+                                        
+                                        <li> <p id="myDIV"><i class="fal fa-expand-arrows me-2"></i>{{properties.total_area}} Sq. Ft.</p> </li>
+                                        <li> <p id="m"><i class="fal fa-expand-arrows me-2"></i>{{properties.total_area}} Sq. M.</p> </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-12 text-end">
+                                    <div class="properti-amenties-rgt">
+                                        <a type ="button" onclick="myFunction()" href="javascript:void(0);" class="active">Sq.ft</a>
+                                        <a type ="button" onclick="myFunction2()" href="javascript:void(0);">Sq.m</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-facilities-card">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Facilities and Services</h4>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-01.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Kitchen Appliances</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-02.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Wardrobe</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-03.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Kitchen Appliances</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-03.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Kitchen Appliances</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-02.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Wardrobe</h5>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="facilities-card-innr p-15">
+                                        <span>
+                                            <img src="{% static 'assets/images/facilities-icon-01.png' %}" alt="">
+                                        </span>
+                                        <h5>Built-in Kitchen Appliances</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-desc dble-brdr ">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Description</h4>
+                            <p>{{properties.desc}}...</p>
+                        </div>
+                        <div class="prprty-list-dtl p-10">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Listing Details</h4>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="table table-bordered text-secondary">
+                                        <tbody>
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>{{properties.property_location}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total area sq.ft</td>
+                                                <td>{{properties.total_area}} EUR</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total area sq.m</td>
+                                                <td>{{properties.total_area}} EUR</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RERA No.:</td>
+                                                <td>7148591819</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Reference No.:</td>
+                                                <td><a href="javascript:void(0);" class="primary-clr"><i class="fal fa-copy me-2"></i></a>axc-3964735</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="table table-bordered text-secondary">
+                                        <tbody>
+                                            <tr>
+                                                <td>Furnishing</td>
+                                                <td>Furnished</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Property Type:</td>
+                                                <td>{{properties.property_type}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Parking Lots:</td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bedroom:</td>
+                                                <td>{{properties.bedroom}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-location p-10 dble-brdr border-bottom-0">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Location</h4>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1094.1002417693!2d55.27486914951601!3d25.197210899886063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e1!3m2!1sen!2sin!4v1697021123449!5m2!1sen!2sin" width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="nearby-amenties dble-brdr p-15 px-0">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="nearby-amenties-content">
+                                        <h4 class="fz-20 fw-600 font-2 text-white mb-2">Near by school</h4>
+                                        <h6 class="fz-16 fw-400 text-white">JSS International School LLC</h6>
+                                        <p class="text-secondary">Al Barsha South, Dubai, United Arab EmiratesDistance: 1.03 km</p>
+                                    </div>
+                                    <div class="nearby-amenties-content">
+                                        <h4 class="fz-20 fw-600 font-2 text-white mb-2">Near by school</h4>
+                                        <h6 class="fz-16 fw-400 text-white">JSS International School LLC</h6>
+                                        <p class="text-secondary">Al Barsha South, Dubai, United Arab EmiratesDistance: 1.03 km</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <h4 class="fz-20 fw-600 font-2 text-white mb-2">Near by Airport</h4>
+                                    <h6 class="fz-16 fw-400 text-white">JSS International</h6>
+                                    <p class="text-secondary">Al Barsha South, Dubai, United Arab EmiratesDistance: 1.03 km</p>
+                                </div>
+                                <div class="col-xl-4 col-lg-6">
+                                    <h4 class="fz-20 fw-600 font-2 text-white mb-2">Near by Market</h4>
+                                    <h6 class="fz-16 fw-400 text-white">JSS International</h6>
+                                    <p class="text-secondary">Al Barsha South, Dubai, United Arab EmiratesDistance: 1.03 km</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preperty-agent-profile p-15">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="preperty-agent-profile-img">
+                                        <img src="{% static 'assets/images/profile-img.png' %}" alt="" class="">
+                                        <h4 class="fz-20 fw-600 font-2 text-white mb-2 text-center">Fatima Ezzahra Elhabib</h4>
+                                        <h6 class="fz-16 fw-400 text-secondary text-center">Property Consultant</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8">
+                                    <div class="preperty-agent-profile-rgt">
+                                        <h3 class="fz-20 fw-600 font-2 mb-2 text-center primary-clr text-uppercase">Book your viewing</h3>
+                                        <h5 class="fz-16 fw-400 mb-2 text-center text-white">And our agent will show you property</h5>
+                                        
+                                        <form action="/bookappointment/" method="post" class="row align-items-center" id="feedback-form">
+                                            {% csrf_token %}
+
+                                            <div class="owl-carousel owl-theme" id="calendar-slider">
+                                                <div class="calendar-slider-item">
+                                                    <button>Fri. 7 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>Sat. 8 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>San. 9 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>Mon. 10 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>Tue. 11 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>Wed. 12 Oct.</button>
+                                                </div>
+                                                <div class="calendar-slider-item">
+                                                    <button>Thu. 13 Oct.</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input class="form-control" type="date" placeholder="dd-mm-yyyy" name = "appointment_date" >
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="number" class="form-control" name="phone_number" placeholder="Enter Phone Number">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="email" class="form-control" name="email" placeholder="Enter Email Address">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="appointment_type" id="call" checked>
+                                                            <label class="fw-400 primary-clr fz-16" for="call">
+                                                                IN PERSON
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="appointment_type" id="video">
+                                                            <label class="fw-400 primary-clr fz-16" for="video">
+                                                                VIDEO CHAT
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button class="thm-btn w-100" type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="similar-product">
+                            <h3 class="fz-20 fw-600 text-white font-2 text-center mb-2">Similar Properties</h3>
+                            <div class="row">
+                                
+                                {% for x in properties_data|slice:":3" %}
+                                    
+                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="product-innr">
+                                            <div class="product-img">
+                                                <a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+                                                <span class="product-rating"><i class="fas fa-star"></i> 4.5</span>
+                                            </div>
+                                            <div class="product-content">
+                                                <h4><a href="/properties_details/{{x.pk}}/">{{x.title|slice:":60"}} .....</a></h4>
+                                                
+                                                
+                                                <p><i class="fas fa-map-marker-alt me-1"></i>{{x.property_location}}</p>
+                                                <h6 class="text-white">{{x.property_type}}</h6>
+                                                <div class="product-amenties">
+                                                    <span><i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>
+                                                    <span><i class="fal fa-mug me-1"></i> 8</span>
+                                                    <span><i class="far fa-expand-arrows me-1"></i> {{x.total_area}} Sq. Ft.</span>
+                                                </div>
+                                                <div class="product-prc">
+                                                    <div>
+                                                        <p>AUD {{x.rate}}</p>
+                                                    </div>
+                                                    <div>
+                                                        <a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{properties.pk}}" ><i class="far fa-bookmark"></i></a>										
+												        <a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{properties.pk}}"><i class="fas fa-sliders-h"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-social">
+                                                <a href="javascript:void(0);"><i class="far fa-phone fa-rotate-90"></i></a>
+                                                <a href="javascript:void(0);"><i class="fab fa-whatsapp"></i></a>
+                                                <a href="javascript:void(0);"><i class="far fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                {% endfor %}
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="nearby-area dble-brdr p-15 mt-4 px-0">
+                            <h3 class="fz-20 fw-600 text-white font-2 text-center mb-2">Areas nearby</h3>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="agent-slider-img">
+                                        <img src="{% static 'assets/images/area-img-01.png' %}" alt="">
+                                        <div class="agent-contnt">
+                                            <h4 class="text-white">Dubai Marina</h4>
+                                            <h5 class="text-white">Available apartments: 20</h5>
+                                            <p class="mb-0"> <a href="javascript:void(0);">Explorw Now</a> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="agent-slider-img">
+                                        <img src="{% static 'assets/images/area-img-02.png' %}" alt="">
+                                        <div class="agent-contnt">
+                                            <h4 class="text-white">Dubai Marina</h4>
+                                            <h5 class="text-white">Available apartments: 20</h5>
+                                            <p class="mb-0"> <a href="javascript:void(0);">Explorw Now</a> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="agent-slider-img">
+                                        <img src="{% static 'assets/images/area-img-03.png' %}" alt="">
+                                        <div class="agent-contnt">
+                                            <h4 class="text-white">Dubai Marina</h4>
+                                            <h5 class="text-white">Available apartments: 20</h5>
+                                            <p class="mb-0"> <a href="javascript:void(0);">Explorw Now</a> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-rgt mt-5">
+                            <div class="owl-carousel owl-theme" id="testimonial-slider">
+                                {% for x in review_data %}
+                                    <div class="item review-slider-item">
+                                        <div class="review-slider-innr">
+                                            <p>“{{x.comment|slice:":410"}}”</p>
+                                            <div class="review-slider-innr-star">
+                                                <p >
+                                                    {{ x.get_star_icons|safe}}
+                                                </p>
+                                                <h5>{{x.reviewer_name}}</h5>
+                                            </div>
+                                        </div>
+                                        <img src="{{x.photo.url}}" alt="">
+                                    </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4">
+                    <div class="profile-card sticky-top">
+                        <img src="{% static 'assets/images/profile-img.png' %}" alt="">
+                        <h5 class="text-white">Fatima Ezzahra Elhabib</h5>
+                        <p class="m-0">Property Consultant</p>
+                        <div class="prfl-card-btn">
+                            <a href="javascript:void"><i class="far fa-envelope me-2"></i>Email</a>
+                            <a href="javascript:void"><i class="far fa-phone me-2 fa-rotate-90"></i>Call</a>
+                            <a href="javascript:void"><i class="fab fa-whatsapp me-2"></i>Whatsapp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+        function myFunction2() {
+          var x = document.getElementById("m");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+        </script> -->
+
+
+
+{% endblock body %}

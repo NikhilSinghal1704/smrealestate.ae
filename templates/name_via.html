@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Properties{% endblock %}</title>
+{% block body %}
+
+
+<section class="bannr-sec property-bnner">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12 col-sm-12">
+				<div class="bannr-content text-center">
+					<h1 class="text-white">Properties for Sale in {{title}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="tp-space product-sec off-plan">
+    
+    <div class="container">
+        <div class="row">
+		{% for x in  properties|slice:":2" %}
+		{% if x.status  == 1 %}
+		  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">	
+			<div class="product-innr">	
+			  <div class="product-img">	
+				<a href="/agents_details/{{x.pk}}/" class="text-uppercase"><img src="{{x.assign_agents.photo.url}}" alt=""></a>	
+			  </div>	
+			  <div class="product-content">	
+				<h4><a href="/agents_details/{{x.pk}}/" class="text-uppercase">{{x.assign_agents.name}}</a></h4>	
+				<p><span>{{x.assign_agents.position}}</span></p>	
+			  </div>	
+			  <div class="agent-info">	
+				<!--<p>Experience: {{x.exprience}} years</p>-->	
+				<p>Languages: {{x.assign_agents.language}}</p>	
+			  </div>	
+			   <div class="agetnt-whatsp">	
+				   <a href="https://wa.me/{{x.assign_agents.whatsapp_number}}" class="">
+						   <i class="fab fa-whatsapp"></i></a>	
+			   </div>	
+			</div>	
+		  </div>
+		  {% endif %}
+		  {% endfor %}
+		</div>
+    </div>
+    
+    
+	<div class="container">
+		<h3 class="subhead text-center">Properties for sale In {{title}}</h3>
+		<div class="row">
+            {% for x in  properties %}
+			{% if x.status == 1 %}							
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+						<a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+					</div>
+					<div class="product-content">
+						<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+						<div class="product-amenties">
+							<span>
+								<i class="fal fa-bed me-1"></i>{{x.bedroom}}</span>
+							<span>
+								<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+							<span>
+								<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+						</div>
+						<h4><a href="/properties_details/{{x.pk}}/">{{x.title|slice:":25"}}....</a></h4>
+						<p>
+							<i class="fas fa-map-marker-alt me-1"></i>{{x.property_location|slice:":20"}}..</p>
+					</div>
+					<div class="property-agent">
+						<div class="property-agent-img">
+							<a href="#">
+							<img src="{{x.assign_agents.photo.url}}" alt="">
+							</a>
+						</div>
+						<div class="property-agent-info">
+							<h6>{{x.assign_agents.name}}</h6>
+							<p>{{x.assign_agents.position}}</p>
+						</div>
+						<div class="property-agent-whatsapp">
+							<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+								<i class="fab fa-whatsapp"></i></a>
+						</div>
+					</div>
+					<div class="product-type">
+						<a href="#" class="golden product-badge">{{x.rent}}</a>
+						<a href="#" class="dark product-badge">{{x.property_type}}</a>
+					</div>
+					<div class="favorite-icon">
+						<a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{x.pk}}" >
+							<i class="far fa-bookmark"></i></a>
+						<a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{x.pk}}">
+							<i class="fas fa-sliders-h"></i></a>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			</div>
+			
+			<div class="col-lg-12 text-center">
+				<div class="cstm-pagination ">
+					<ul class="pagination">
+						{% if properties.has_previous %}
+						<li class="page-item prev"><a class="page-link" href="?page={{ properties.previous_page_number }}">Previous</a></li>
+						{% endif %}
+						<li class="page-item"><a class="page-link active" href="javascript:void(0);">{{ properties.number }}</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);">of</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);">{{ properties.paginator.num_pages }}</a></li>
+						{% if properties.has_next %}
+						<li class="page-item next"><a class="page-link" href="?page={{ properties.next_page_number }}">Next</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+			
+			<div class="row">
+            {% for x in  off_plan %}
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+						<img src="{{x.images.url}}" alt="">
+					</div>
+					<div class="off-plan-content">
+						<h5><a href="/{{x.locations}}/{{x.name}}/{{x.pk}}/">{{x.name}}</a></h5>
+						<p>
+							<a href="/{{x.locations}}/">
+								<i class="fas fa-map-marker-alt me-1"></i>{{x.locations}}</a></p>
+					</div>
+					<div class="off-plan-badge">
+						<a href="/apartment_properties/">Apartments</a>
+						<a href="/panthouse_properties/">Penthouses</a>
+						<a href="/villa_properties/">Villas</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			</div>
+		</div>
+</section>
+
+
+
+{% endblock body %}

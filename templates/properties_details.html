@@ -1,0 +1,444 @@
+{% extends 'base.html' %}
+{% load static %}
+title>{% block title %}SM- Properties-Details{% endblock %}</title>
+{% block body %}
+    <section class="space mn-h bkng">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="property-dtl">
+                        <div class="property-gllery">
+                            <div class="row g-2">
+                                <div class="col-lg-6 col-md-6 col-sm-6 frst-img">
+                                    <img src="{{properties.display_images.url}}" alt="">
+                                    {% for y in properties_images|slice:":1" %} 
+                                    <img src="{{y.photo.url}}" alt="" class="w-100">
+										{% endfor %}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="owl-carousel owl-theme gallery-slider" id="gallery-slider">
+                                        {% for y in properties_images|slice:"1:" %}
+                                        <div class="item">
+                                            <img src="{{y.photo.url}}" alt="" class="w-100">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="property-nme">{{properties.title}}{{list_photo}}</h4>
+						<p class="fz-14"><i class="fas fa-map-marker-alt me-2"></i>{{properties.property_location}}</p>
+                        <div class="property-filter">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-6 col-sm-6 col-12">
+                                    <div class="property-filter-lft">
+                                        <h5 id ="crate">{{target_currency}}  {{ convet_rate }} </h5>
+                                        <div>
+                                            <select name="currencyrate" id= "currencyrate"  class="form-select" data-id="{{properties.id}}">
+                                                <option  value="EUR">EUR</option>
+                                                <option  value="AUD">AUD</option>
+                                                <option  value="AED">AED</option>
+                                                <option  selected  value="INR">INR</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-end">
+                                    <div class="property-filter-icon">
+                                        <a href="https://wa.me/1234567890"><i class="fas fa-share-alt"></i></a>  
+                                        <a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{properties.pk}}" ><i class="far fa-bookmark"></i></a>									
+                                        <a href="javascript:void(0);"  class="comprassion-button" 
+                                        data-product-id="{{properties.pk}}"><i class="fas fa-sliders-h"></i></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="properti-amenties dble-brdr">
+                            <div class="row justify-content-between">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-12">
+                                    <ul class="properti-amenties-lft">
+                                        <li> <p><i class="far fa-bed me-2"></i>{{properties.bedroom}}</p> </li>
+                                        <li> <p><i class="fas fa-bath me-2"></i>8</p> </li>
+                                        <li> <p ><i class="fal fa-ruler-triangle me-2"></i>
+                                        <span id="value1" style="display: none;">{{properties.total_area}} Sq. Ft.</span>
+                                        <span id="value2" style="display: none;">{{properties.square_meters}} Sq. M.</span></p>
+                                        </li>
+                                        <!--<li> <p  ><i class="fal fa-ruler-triangle me-2"></i>-->
+                                        <!--<span id="value2" style="display: none;">{{properties.square_meters}} Sq. M.</span></p> </li>-->
+                                    </ul>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-12 text-end">
+                                    <div class="properti-amenties-rgt">
+                                        <a href="javascript:void(0);" id="ft">Sq.ft</a>
+                                         <a href="javascript:void(0);" id="m">Sq.m</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-features-card">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Features and Amenities</h4>
+								<div class="property-features-card-innr">
+									<h5 class="primary-clr fz-18 font-2">Indoor</h5>
+									<ul>
+									    {% for x in list_indoor %}
+										<li>{{x}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="property-features-card-innr">
+									<h5 class="primary-clr fz-18 font-2">Outdoor</h5>
+									<ul>
+									    {% for x in list_outdoor %}
+										<li>{{x}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="property-features-card-innr">
+									<h5 class="primary-clr fz-18 font-2">Lot</h5>
+									<ul>
+									    {% for x in list_lot %}
+										<li>{{x}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+                        <div class="property-desc dble-brdr ">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Description</h4>
+                            <p>{{properties.desc}}...</p>
+                        </div>
+                        <div class="prprty-list-dtl p-10">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Listing Details</h4>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="table table-bordered text-secondary">
+                                        <tbody>
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>{{properties.property_location}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total area sq.ft</td>
+                                                <td>{{properties.total_area}} EUR</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total area sq.m</td>
+                                                <td>{{properties.square_meters}} EUR</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RERA No.:</td>
+                                                <td>7148591819</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Reference No.:</td>
+                                                <td><a href="javascript:void(0);" class="primary-clr"><i  class="fal fa-copy me-2"></i></a>axc-3964735</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="table table-bordered text-secondary">
+                                        <tbody>
+                                            <tr>
+                                                <td>Type</td>
+                                                <td>{{properties.rent}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Property Type:</td>
+                                                <td>{{properties.property_type}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bathroom</td>
+                                                <td>{{properties.bathroom}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bedroom:</td>
+                                                <td>{{properties.bedroom}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-location p-10 dble-brdr border-bottom-0">
+                            <h4 class="fz-20 fw-600 font-2 text-white mb-4">Location</h4>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1094.1002417693!2d55.27486914951601!3d25.197210899886063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e1!3m2!1sen!2sin!4v1697021123449!5m2!1sen!2sin" width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="preperty-agent-profile p-15">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="preperty-agent-profile-img">
+                                        <img src="{{properties.assign_agents.photo.url}}" alt="" class="">
+                                        <h4 class="fz-20 fw-600 font-2 text-white mb-2 text-center">{{properties.assign_agents.name}}</h4>
+                                        <h6 class="fz-16 fw-400 text-secondary text-center">{{properties.assign_agents.position}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8">
+                                    <div class="preperty-agent-profile-rgt">
+                                        <h3 class="fz-20 fw-600 font-2 mb-2 text-center primary-clr text-uppercase">Book your viewing</h3>
+                                        <h5 class="fz-16 fw-400 mb-2 text-center text-white">And our agent will show you property</h5>
+                                        <div class="owl-carousel owl-theme" id="calendar-slider">
+                                            {% for day_name, date_str, date_dm  in current_week_dates %}
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="{{ date_str }}" >{{ day_name }}.{{date_dm}}</button>
+                                            </div>
+                                            {% endfor %}
+
+                                            <!-- <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-29" >Fri. 7 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab"  data-value="2023-10-23" >Sat. 23 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-24">San. 24 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-25">Mon. 25 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-26">Tue. 26 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-27">Wed. 27 Oct.</button>
+                                            </div>
+                                            <div class="calendar-slider-item">
+                                                <button class ="ab" data-value="2023-10-28">Thu. 28 Oct.</button>
+                                            </div> -->
+                                        </div>
+                                        <form action="/bookappointment/" method="post" class="row align-items-center" id ="book-form">
+                                            {% csrf_token %}
+
+                                            <input type="hidden" id="bookdate" name="appointment_date">
+                                            
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="number" class="form-control" name="phone_number" placeholder="Enter Phone Number">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
+                                                <input type="email" class="form-control" name="email" placeholder="Enter Email Address">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="appointment_type" value="IN PERSON" id="call" checked>
+                                                            <label class="fw-400 primary-clr fz-16" for="call">
+                                                                IN PERSON
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" value="VIDEO CHAT" name="appointment_type" id="video">
+                                                            <label class="fw-400 primary-clr fz-16" for="video">
+                                                                VIDEO CHAT
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button class="thm-btn w-100" type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="similar-product product-sec" style="background-image: none;">
+                            <h3 class="fz-20 fw-600 text-white font-2 text-center mb-2">Similar Properties</h3>
+                            <div class="row">
+                                
+                                {% for x in properties_data|slice:":3" %}
+                                    
+                                    <!--<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="product-innr">
+                                            <div class="product-img">
+                                                <a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+                                                <span class="product-rating"><i class="fas fa-star"></i> 4.5</span>
+                                            </div>
+                                            <div class="product-content">
+                                                <h4><a href="/properties_details/{{x.pk}}/">{{x.title|slice:":60"}} .....</a></h4>
+                                                
+                                                
+                                                <p><i class="fas fa-map-marker-alt me-1"></i>{{x.property_location}}</p>
+                                                <h6 class="text-white">{{x.property_type}}</h6>
+                                                <div class="product-amenties">
+                                                    <span><i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>
+                                                    <span><i class="fal fa-mug me-1"></i> 8</span>
+                                                    <span><i class="far fa-expand-arrows me-1"></i> {{x.total_area}} Sq. Ft.</span>
+                                                </div>
+                                                <div class="product-prc">
+                                                    <div>
+                                                        <p>AUD {{x.rate}}</p>
+                                                    </div>
+                                                    <div>
+                                                        <a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{x.pk}}" ><i class="far fa-bookmark"></i></a>									
+                                                        <a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{x.pk}}"><i class="fas fa-sliders-h"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-social">
+                                                <a href="tel:+1234567890"><i class="far fa-phone fa-rotate-90"></i></a>
+                                                <a href="https://wa.me/+1234567890?text=Hello%20there!"><i class="fab fa-whatsapp"></i></a>
+                                                <a href="mailto:example@email.com"><i class="far fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    
+									<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+										<div class="product-innr">
+											<div class="product-img">
+												<a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+											</div>
+											<div class="product-content">
+												<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+												<div class="product-amenties">
+													<span>
+														<i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>
+													<span>
+														<i class="fas fa-bath me-1"></i> {{x.bathroom}}</span>
+													<span>
+														<i class="fal fa-ruler-triangle me-1"></i> {{x.total_area}} Sq. Ft.</span>
+												</div>
+												<h4><a href="/properties_details/{{x.pk}}/">{{x.title|slice:":30"}}..</a></h4>
+												<p>
+													<i class="fas fa-map-marker-alt me-1"></i> {{x.property_location|slice:":25"}}</p>
+											</div>
+											<div class="property-agent">
+												<div class="property-agent-img">
+													<a href="#">
+														<img src="{{x.assign_agents.photo.url}}" alt="">
+													</a>
+												</div>
+												<div class="property-agent-info">
+													<h6>{{x.assign_agents.name}}</h6>
+								                    <p>{{x.assign_agents.position}}</p>
+												</div>
+												<div class="property-agent-whatsapp">
+													<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+														<i class="fab fa-whatsapp"></i></a>
+												</div>
+											</div>
+											<div class="product-type">
+												<a href="#" class="golden product-badge">{{x.rent}}</a>
+										        <a href="#" class="dark product-badge">{{x.property_type}}</a>
+											</div>
+											<div class="favorite-icon">
+												<a href="#" class="golden favorite-button" data-product-id= "{{x.pk}}">
+													<i class="far fa-bookmark"></i></a>
+													<a href="#" class="dark comprassion-button" data-product-id="{{x.pk}}">
+													<i class="fas fa-sliders-h"></i></a>
+											</div>
+										</div>
+									</div>
+                                {% endfor %}
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="review-rgt mt-5">
+                            <div class="owl-carousel owl-theme" id="testimonial-slider">
+                                {% for x in review_data %}
+                                    <div class="item review-slider-item">
+                                        <div class="review-slider-innr">
+                                            <p class ="review-comment">“{{x.comment|slice:":260"}}...”</p>
+                                            <div class="review-slider-innr-star">
+                                                <p >
+                                                    {{ x.get_star_icons|safe}}
+                                                </p>
+                                                <h5>{{x.reviewer_name}}</h5>
+                                            </div>
+                                        </div>
+                                        <img src="{{x.photo.url}}" alt="">
+                                    </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4">
+                    <div class="profile-card sticky-top">
+                        <img src="{{properties.assign_agents.photo.url}}" alt="">
+                        <h5 class="text-white">{{properties.assign_agents.name}}</h5>
+                        <p class="m-0">{{properties.assign_agents.position}}</p>
+                        <div class="prfl-card-btn">
+                            <a href="mailto:{{properties.assign_agents.email}}"><i class="far fa-envelope me-2"></i>Email</a>
+                            <a href="https://wa.me/{{x.assign_agents.whatsapp_number}}"><i class="fab fa-whatsapp me-2"></i>Whatsapp</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+
+
+        $(document).ready(function() {
+            const ft = $("#ft");
+            const m = $("#m");
+            const value1 = $("#value1");
+            const value2 = $("#value2");
+
+            value1.show();
+            value2.hide();
+
+            ft.click(function() {
+                value1.show();
+                value2.hide();
+                ft.addClass("active");
+                m.removeClass("active");
+            });
+
+            m.click(function() {
+                value1.hide();
+                value2.show();
+                m.addClass("active");
+                ft.removeClass("active");
+            });
+
+
+            $(".ab").on('click', function() {
+                $(".ab").removeClass('active');
+                $(this).addClass('active');
+            });
+
+
+        });
+
+
+
+        
+
+
+
+
+
+
+
+
+        </script>
+
+<!-- <script>
+    const djangoStringArray = "{{ properties.indoor }}";
+    
+    // Remove the leading and trailing quotes from the string and use JSON.parse()
+    const array = JSON.parse(djangoStringArray.replace(/'/g, '"'));
+    
+    // Now 'array' holds the actual JavaScript array
+    console.log(array); // Display the array in the console for demonstration
+</script> -->
+
+{% endblock body %}

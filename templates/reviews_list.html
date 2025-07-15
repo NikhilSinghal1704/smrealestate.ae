@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+title>{% block title %}SM- Review-List{% endblock %}</title>
+{% block body %}
+
+<section class="blog-sec space">
+    <div class="container">
+        <div class="blog-sec-innr" style="background-image:url('{% static "assets/images/review-bnnr-bg.png"%}')";>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="blog-content">
+                        <h1>What say our clients</h1>
+                        <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as</p>
+                        <a href="/add_review/" class="thm-btn mt-4">Leave your review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="review-sec tp-space">
+    <div class="container">
+        <div class="heading new-head">
+            <div class="heading-icon">
+                <img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+            </div>
+            <div class="heading-content">
+                <h3>Reviews</h3>
+                <p>What clients say about us</p>
+            </div>
+        </div>
+        <div class="row">
+
+            {% for x in review %}
+            <div class="col-lg-4 col-md-6 col-sm-6 testimonial-main">
+                <div class="testimonial p-20">
+                    <div class="testimonial-profile">
+                        <div class="testi-profile-img">
+                            <img src="{{x.photo.url}}" alt="">
+                        </div>
+                        <div class="testi-profile-cntnt">
+                            <h4>{{x.reviewer_name}}</h4>
+                            <p >
+                                {{ x.get_star_icons|safe}}
+                              </p>
+                        </div>
+                    </div>
+                    <p>“{{x.comment}}"</p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+            <div class="col-lg-12 text-center">
+                <div class="cstm-pagination ">
+                  <ul class="pagination">
+                    {% if review.has_previous %}
+                    <li class="page-item prev"><a class="page-link" href="?page={{ review.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    
+                    <li class="page-item"><a class="page-link active" href="javascript:void(0);">{{ review.number }}</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">of</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">{{ review.paginator.num_pages }}</a></li>
+                    {% if review.has_next %}
+                    <li class="page-item next"><a class="page-link" href="?page={{ review.next_page_number }}">Next</a></li>
+                    
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock body %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<title>{% block title %}SM- Home{% endblock %}</title>
+
+{% block body %}
+
+
+
+<div class="space"></div>
+
+<section class="partner-sec tp-space">
+
+	<div class="container">
+
+		<div class="heading new-head">
+
+			<div class="heading-icon">
+
+				<img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+
+			</div>
+
+			<div class="heading-content">
+
+				<h3>Our All Partners </h3>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			{% for x in partners %}
+
+				{% if x.status == 1 %}
+
+					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
+
+						<a href="javascript:void(0);">
+
+							<div class="partner_innr_img">
+
+								<img src="{{x.partners_images.url}}" alt="">
+
+							</div>
+
+							
+
+						</a>
+
+					</div>
+
+				{% endif %}
+
+			{% endfor %}
+
+			
+
+		</div>
+
+	</div>
+
+</section>
+
+
+
+{% endblock body %}

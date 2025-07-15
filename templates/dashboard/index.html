@@ -1,0 +1,124 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Admin-Home{% endblock %}</title>
+{% block body %}
+<div class="page-body">
+  <!-- Container-fluid starts-->
+  <div class="container-fluid dashboard-default-sec">
+    <div class="row">
+      <div class="col-xl-12 box-col-12 des-xl-100">
+        <div class="row">
+          
+          <div class="col-xl-3 col-md-3 col-sm-6 box-col-3 des-xl-25 rate-sec">
+            <div class="card income-card card-primary">
+              <div class="card-body text-center">
+                <div class="round-box">
+                  <a href="/dashboard/agents_list/"><i data-feather="user"></i></a>
+                </div>
+                <h5>{{agents|length  }}+</h5>
+                <p>Agents</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-3 col-sm-6 box-col-3 des-xl-25 rate-sec">
+            <div class="card income-card card-primary">
+              <div class="card-body text-center">
+                <div class="round-box">
+                  <a href="/dashboard/properties_list/"><i data-feather="home"></i></a>
+                </div>
+                <h5>{{property|length }}+</h5>
+                <p>Total Properties</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-3 col-sm-6 box-col-3 des-xl-25 rate-sec">
+            <div class="card income-card card-primary">
+              <div class="card-body text-center">
+                <div class="round-box">
+                  <a href="/dashboard/review_list/"><i data-feather="message-circle"></i></a>
+                </div>
+                <h5>{{review|length}}+</h5>
+                <p>Total Review</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-3 col-sm-6 box-col-3 des-xl-25 rate-sec">
+            <div class="card income-card card-primary">
+              <div class="card-body text-center">
+                <div class="round-box">
+                  <a href="/dashboard/blog_list/"><i data-feather="image"></i></a>
+                </div>
+                <h5>{{agents|length}}+</h5>
+                <p>Total Blog</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5>Recent Properties</h5>
+              <table class="display" id="example-style-1">
+                <thead>
+                  <tr>
+                    <th>Properties Image</th>
+                    <th>Title</th>
+                    <th>Property Location</th>
+                    <th>bedroom</th>
+                    <th>property Type</th>
+                    <th>Total Area</th>
+                    <th>Rate</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for x in property%}
+                  <tr>
+                    <td><img class="img-50" src="{{x.photo.url}}" alt=""></td>
+                    <td>{{x.title}}</td>
+                    <td>{{x.property_location}}</td>
+                    <td>{{x.bedroom}}</td>
+                    <td>{{x.property_type}}</td>
+                    <td>{{x.total_area}}</td>
+                    <td>{{x.rate}}</td>
+                    <td>
+                      <p>{% if x.status == 0 %}   
+                        <a href="javascript:void(0);" class="btn btn-primary">
+                          InActive
+                        </a>                                               
+                      {% else %}                       
+                      <a href="javascript:void(0);" class="btn btn-primary-light">
+                        Active
+                      </a>                     
+                        {% endif %}
+                        </p>
+                    </td>
+                    <td>
+                      <a href="/dashboard/propertiesdelete/{{x.pk}}/"><i class="fa fa-trash"></i></a>
+                      <a href="/dashboard/propertiesdetails/{{x.pk}}/"><i class="fa fa-eye"></i></a>
+                      <a href="/dashboard/propertiesupdate/{{x.pk}}/"><i class="fa fa-pencil"></i></a>
+                    </td>                   
+                  </tr>
+                  {% endfor %}                 
+                </tbody>              
+              </table>
+            </div>
+            <div class="code-box-copy">
+              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#recent-order" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+
+{% endblock body %}

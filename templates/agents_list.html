@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+title>{% block title %}SM- Properties-Details{% endblock %}</title>
+{% block body %}
+
+
+{% for x in properties.photo %}
+{{x}}
+{% endfor %}
+
+
+{% endblock body %}

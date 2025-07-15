@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- OfficeImage-Details{% endblock %}</title>
+{% block body %}
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Office Images Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Office Images Management</li>
+            <li class="breadcrumb-item active">Add Office Images</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h5>Office Images Management</h5>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" method="post" novalidate="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="id_name">Office Images Name</label>
+                  <input class="form-control" type="text" value=" {{object.office_images_name}}" disabled name="office_images_name" maxlength="155" required id="id_name">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="id_photo">Office Images Image</label>
+                  <input class="form-control" type="file" name="office_images" disabled  id="id_photo">
+                  {% if object.office_images %}
+                      <img class="form-control" src="{{object.office_images.url}}" alt="{{ object.office_images }} Image"><br>
+                  {% endif %}
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+               
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+
+{% endblock body %}
+
+
+
+
+
+
+

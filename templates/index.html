@@ -1,0 +1,685 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Home{% endblock %}</title>
+{% block body %}
+<section class="bannr-home">
+	<div class="owl-carousel owl-theme" id="home-banner-slider">
+		{% for x in banner %}
+		<div>
+			<div class="item ">
+				<div class="home-slider-innr">
+				    <img src="{{x.our_project_images.url}}" alt="">
+				<div class="home-slider-innr-content">
+					<h1 class="text-white">{{x.heading}}</h1>
+					<p>{{x.our_project_text}}</p>
+
+				</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		
+	</div>
+</section>
+
+<section class="product-sec off-plan tp-space">
+	<div class="container">
+		<div class="heading justify-content-between align-items-center prohead mb-3">
+			<div class="heading-content">
+				<h3>Off plan Latest Launches</h3>
+			</div>
+			<div class="heading-icon">
+				<a href="/off_plane/" class="thm-btn">Show all Project</a>
+			</div>
+		</div>
+		<div class="row">
+			{% for x in  off_plane|slice:":4" %}
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+						<a href="/off_plan/{{x.locations}}/{{x.name}}/{{x.pk}}/"><img src="{{x.images.url}}" alt=""></a>
+					</div>
+					<div class="off-plan-content">
+						<h5><a href="/off_plan/{{x.locations}}/{{x.name}}/{{x.pk}}/">{{x.name}}</a></h5>
+						<p>
+							<a href="/off_plan/{{x.locations}}/">
+								<i class="fas fa-map-marker-alt me-1"></i>{{x.locations}}</a></p>
+					</div>
+					<div class="off-plan-badge">
+						<a href="/apartment_properties/">Apartments</a>
+						<a href="/panthouse_properties/">Penthouses</a>
+						<a href="/villa_properties/">Villas</a>
+					</div>
+					<div class="product-type">
+						<span href="#" class="white product-badge">{{x.payment_plan}}</span>
+						<span href="#" class="white product-badge">Handover {{x.handover}}</span>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+<section class="product-sec secondary-pro tp-space">
+<div class="container">
+	<div class="heading justify-content-between align-items-center prohead  mb-3">
+			<div class="heading-content">
+				<h3> Secondary properties</h3>
+			</div>
+			<div class="heading-icon">
+				<a href="/properties/" class="thm-btn">Show all Project</a>
+			</div>
+		</div>
+		<div class="row">
+		    {% for x in secondary|slice:":4" %}
+			{% if x.status == 1 %}
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+
+						<a href="properties_details/{{x.pk}}" {% if x.display_images %}><img src="{{x.display_images.url}}" alt="">{% endif %}</a>
+					
+					</div>
+					<div class="product-content">
+						
+						
+						
+						<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+						
+						<div class="product-amenties">
+							<span>
+								<i class="fal fa-bed me-1"></i>{{x.bedroom}}</span>
+							<span>
+								<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+							<span>
+								<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+						</div>
+						<h4><a href="properties_details/{{x.pk}}">{{x.title|slice:":25"}}....</a></h4>
+						<p>
+							<i class="fas fa-map-marker-alt me-1"></i>{{x.property_location|slice:":20"}}..</p>
+					</div>
+					<div class="property-agent">
+						<div class="property-agent-img">
+							<a href="#">
+							<img src="{{x.assign_agents.photo.url}}" alt="">
+							</a>
+						</div>
+						<div class="property-agent-info">
+							<h6>{{x.assign_agents.name}}</h6>
+							<p>{{x.assign_agents.position}}</p>
+						</div>
+						<div class="property-agent-whatsapp">
+							<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+								<i class="fab fa-whatsapp"></i></a>
+						</div>
+					</div>
+					<div class="product-type">
+						<a href="#" class="golden product-badge">{{x.rent}}</a>
+						<a href="#" class="dark product-badge">{{x.property_type}}</a>
+					</div>
+					<div class="favorite-icon">
+						<a href="javascript:void(0);"  class="favorite-button golden" data-product-id= "{{x.pk}}" >
+							<i class="far fa-bookmark"></i></a>
+						<a href="javascript:void(0);"  class="comprassion-button dark" data-product-id="{{x.pk}}">
+							<i class="fas fa-sliders-h"></i></a>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+</div>
+</section>
+<section class="product-sec tp-space">
+	<div class="container">
+		<div class="heading justify-content-between align-items-center prohead  mb-3">
+			<div class="heading-content">
+				<h3>rental  properties</h3>
+			</div>
+			<div class="heading-icon">
+				<a href="/properties/" class="thm-btn">Show all Project</a>
+			</div>
+			
+		</div>
+		<div class="row">
+
+			{% for x in rental|slice:":4" %}
+			{% if x.status == 1 %}
+			
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+						<a href="properties_details/{{x.pk}}"><img src="{{x.photo.url}}" alt=""></a>
+					</div>
+					<div class="product-content">
+						<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+						<div class="product-amenties">
+							<span>
+								<i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>
+							<span>
+								<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+							<span>
+								<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+						</div>
+						<h4><a href="properties_details/{{x.pk}}">{{x.title|slice:":25"}}....</a></h4>
+						<p>
+							<i class="fas fa-map-marker-alt me-1"></i>{{x.property_location|slice:":20"}}..</p>
+					</div>
+					<div class="property-agent">
+						<div class="property-agent-img">
+							<a href="#">
+							<img src="{{x.assign_agents.photo.url}}" alt="">
+							</a>
+						</div>
+						<div class="property-agent-info">
+							<h6>{{x.assign_agents.name}}</h6>
+							<p>{{x.assign_agents.position}}</p>
+						</div>
+						<div class="property-agent-whatsapp">
+							<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+								<i class="fab fa-whatsapp"></i></a>
+						</div>
+					</div>
+					<div class="product-type">
+						<a href="#" class="golden product-badge">{{x.rent}}</a>
+						<a href="#" class="dark product-badge">{{x.property_type}}</a>
+					</div>
+					<div class="favorite-icon">
+						<a href="javascript:void(0);"  class="favorite-button golden" data-product-id= "{{x.pk}}" >
+							<i class="far fa-bookmark"></i></a>
+						<a href="javascript:void(0);"  class="comprassion-button dark" data-product-id="{{x.pk}}">
+							<i class="fas fa-sliders-h"></i></a>
+					</div>
+				</div>
+			</div>
+			
+			{% endif %}
+			{% endfor %}
+
+			<!--<div class="col-lg-12 text-center">
+				<a href="/panthouse_properties/" class="thm-btn mt-5">View All</a>
+			</div>-->
+		</div>
+		
+			<!--<div class="col-lg-12">
+				<ul class="nav product-tabs" id="myTab" role="tablist">
+					<li class="nav-item" >
+						<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-01">Penthouses</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" data-bs-toggle="tab"  data-bs-target="#tab-02">Apartments</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-03">Townhouses</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-04">Villas</button>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane active" id="tab-01">
+						
+					</div>
+
+					<div class="tab-pane fade show  " id="tab-02">
+						<div class="row">
+
+							{% for x in properties %}
+							{% if x.status == 1 %}
+							{% if x.property_type == "Apartments" %}
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+								<div class="product-innr">
+									<div class="product-img">
+										<a href="properties_details/{{x.pk}}"><img src="{{x.photo.url}}" alt=""></a>
+									</div>
+									<div class="product-content">
+										<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+										<div class="product-amenties">
+											<span>
+												<i class="fal fa-bed me-1"></i>{{x.bedroom}}</span>
+											<span>
+												<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+											<span>
+												<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+										</div>
+										<h4><a href="properties_details/{{x.pk}}">{{x.title|slice:":35"}}....</a></h4>
+										<p>
+											<i class="fas fa-map-marker-alt me-1"></i> {{x.property_location|slice:":20"}}..</p>
+									</div>
+									<div class="property-agent">
+										<div class="property-agent-img">
+											<a href="#">
+											<img src="{{x.assign_agents.photo.url}}" alt="">
+											</a>
+										</div>
+										<div class="property-agent-info">
+											<h6>{{x.assign_agents.name}}</h6>
+											<p>{{x.assign_agents.position}}</p>
+										</div>
+										<div class="property-agent-whatsapp">
+											<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+												<i class="fab fa-whatsapp"></i></a>
+										</div>
+									</div>
+									<div class="product-type">
+										<a href="#" class="golden product-badge">{{x.rent}}</a>
+										<a href="#" class="dark product-badge">{{x.property_type}}</a>
+									</div>
+									<div class="favorite-icon">
+										<a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{x.pk}}" >
+											<i class="far fa-bookmark"></i></a>
+										<a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{x.pk}}">
+											<i class="fas fa-sliders-h"></i></a>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+							<div class="col-lg-12 text-center">
+								<a href="apartment_properties" class="thm-btn mt-5">View All</a>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="tab-pane fade" id="tab-03">
+						<div class="row">
+
+							{% for x in properties %}
+							{% if x.status == 1 %}
+							{% if x.property_type == "Townhouses" %}
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+								<div class="product-innr">
+									<div class="product-img">
+										<a href="properties_details/{{x.pk}}"><img src="{{x.photo.url}}" alt=""></a>
+									</div>
+									<div class="product-content">
+										<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+										<div class="product-amenties">
+											<span>
+												<i class="fal fa-bed me-1"></i>{{x.bedroom}}</span>
+											<span>
+												<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+											<span>
+												<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+										</div>
+										<h4><a href="properties_details/{{x.pk}}">{{x.title|slice:":35"}}....</a></h4>
+										<p>
+											<i class="fas fa-map-marker-alt me-1"></i> {{x.property_location|slice:":20"}}..</p>
+									</div>
+									<div class="property-agent">
+										<div class="property-agent-img">
+											<a href="#">
+											<img src="{{x.assign_agents.photo.url}}" alt="">
+											</a>
+										</div>
+										<div class="property-agent-info">
+											<h6>{{x.assign_agents.name}}</h6>
+											<p>{{x.assign_agents.position}}</p>
+										</div>
+										<div class="property-agent-whatsapp">
+											<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+												<i class="fab fa-whatsapp"></i></a>
+										</div>
+									</div>
+									<div class="product-type">
+										<a href="#" class="golden product-badge">{{x.rent}}</a>
+										<a href="#" class="dark product-badge">{{x.property_type}}</a>
+									</div>
+									<div class="favorite-icon">
+										<a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{x.pk}}" >
+											<i class="far fa-bookmark"></i></a>
+										<a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{x.pk}}">
+											<i class="fas fa-sliders-h"></i></a>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+							<div class="col-lg-12 text-center">
+								<a href="townhouse_properties" class="thm-btn mt-5">View All</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane fade" id="tab-04">
+						<div class="row">
+
+							{% for x in properties %}
+							{% if x.status == 1 %}
+							{% if x.property_type == "villa" %}
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+								<div class="product-innr">
+									<div class="product-img">
+										<a href="properties_details/{{x.pk}}"><img src="{{x.photo.url}}" alt=""></a>
+									</div>
+									<div class="product-content">
+										<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+										<div class="product-amenties">
+											<span>
+												<i class="fal fa-bed me-1"></i>{{x.bedroom}}</span>
+											<span>
+												<i class="fas fa-bath me-1"></i>{{x.bathroom}}</span>
+											<span>
+												<i class="fal fa-ruler-triangle me-1"></i>{{x.total_area}} Sq. Ft.</span>
+										</div>
+										<h4><a href="properties_details/{{x.pk}}">{{x.title|slice:":35"}}....</a></h4>
+										<p>
+											<i class="fas fa-map-marker-alt me-1"></i> {{x.property_location|slice:":20"}}..</p>
+									</div>
+									<div class="property-agent">
+										<div class="property-agent-img">
+											<a href="#">
+											<img src="{{x.assign_agents.photo.url}}" alt="">
+											</a>
+										</div>
+										<div class="property-agent-info">
+											<h6>{{x.assign_agents.name}}</h6>
+											<p>{{x.assign_agents.position}}</p>
+										</div>
+										<div class="property-agent-whatsapp">
+											<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+												<i class="fab fa-whatsapp"></i></a>
+										</div>
+									</div>
+									<div class="product-type">
+										<a href="#" class="golden product-badge">{{x.rent}}</a>
+										<a href="#" class="dark product-badge">{{x.property_type}}</a>
+									</div>
+									<div class="favorite-icon">
+										<a href="javascript:void(0);"  class="favorite-button" data-product-id= "{{x.pk}}" >
+											<i class="far fa-bookmark"></i></a>
+										<a href="javascript:void(0);"  class="comprassion-button" data-product-id="{{x.pk}}">
+											<i class="fas fa-sliders-h"></i></a>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+							<div class="col-lg-12 text-center">
+								<a href="villa_properties" class="thm-btn mt-5">View All</a>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>-->
+	</div>
+</section>
+<section class="project-sec tp-space">
+	<div class="container">
+		<div class="heading justify-content-between align-items-center prohead mb-3">
+			<div class="heading-content">
+				<h3> Popular Area in Dubai</h3>
+			</div>
+			<div class="heading-icon">
+				<a href="/popular_area/" class="thm-btn">Show all Project</a>
+			</div>
+		</div>
+		<div class="row">
+			{% for x in popular_area|slice:":3" %}
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<a href="/off_plan/{{x.name}}/">
+					<div class="project-item">
+						<img src="{{x.images.url}}" alt="">
+						<div class="project-item-dtl">
+							<h5>{{x.name}}</h5>
+							<p>Price from <span>{{x.price_from}} AED</span></p>
+						</div>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+			
+		</div>
+		
+		<div class="row">
+		    
+			{% for x in popular_area|slice:"3:5" %}
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<a href="/off_plan/{{x.name}}/">
+					<div class="project-item">
+						<img src="{{x.images.url}}" alt="">
+						<div class="project-item-dtl">
+							<h5>{{x.name}}</h5>
+							<p>Price from <span>{{x.price_from}} AED</span></p>
+						</div>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+<section class="partner-sec tp-space">
+  <div class="container">
+    <div class="heading new-head">
+      <div class="heading-icon">
+        <img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+      </div>
+      <div class="heading-content">
+        <h3>Our Partners </h3>
+      </div>
+    </div>
+
+    <div class="owl-carousel owl-theme" id="partner-slider">
+
+      {% for x in partners %}
+      {% if x.status == 1 %}
+
+      <div class="item partner-innr">
+        <img src="{{x.partners_images.url}}" alt="">
+      </div>
+      {% endif %}
+      {% endfor %}
+
+      
+    </div>
+  </div>
+  <!--<div class="text-center mt-5"><a href="allpartner/" class="thm-btn review-btn">See all </a></div>-->
+</section>
+<!--<section class="review-sec tp-space">-->
+<!--  <div class="container">-->
+<!--    <div class="heading new-head">-->
+<!--      <div class="heading-icon">-->
+<!--        <img src="{% static 'assets/images/heading-icon.png' %}" alt="">-->
+<!--      </div>-->
+<!--      <div class="heading-content">-->
+<!--        <h3>Reviews</h3>-->
+<!--        <p>Are saying about their experience of SM Super Moda</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row align-items-center">-->
+<!--      <div class="col-lg-12">-->
+<!--        <div class="review-rgt text-end mb-4">-->
+<!--          <a href="/add_review/" class="thm-btn">Leave your review</a>-->
+<!--          </div>-->
+<!--          <div class="owl-carousel owl-theme" id="testimonial-slider">-->
+
+<!--            {% for x in review %}-->
+
+            
+<!--            <div class="item review-slider-item">-->
+<!--              <div class="review-slider-innr" >-->
+<!--                <p class ="review-comment">“{{x.comment|truncatewords:50}}...”</p>-->
+<!--                <div class="review-slider-innr-star">-->
+<!--                  <p>-->
+<!--                    {{ x.get_star_icons|safe}}-->
+<!--                  </p>-->
+<!--                  <h5>{{x.reviewer_name}}</h5>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <img src="{{x.photo.url}}" alt="">-->
+<!--            </div>-->
+
+<!--              {% endfor %}-->
+            
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+    <section class="agent-list tp-space">
+   <div class="container">
+      <h4 class="agent-name primary-clr">Agents</h4>
+      <div class="owl-theme owl-carousel" id="agent-hm-slide">
+           {% for x in agents %}
+         <div class="product-innr">
+          <div class="product-img">
+            <a href="/agents_details/{{x.pk}}/" class="text-uppercase"><img src="{{x.photo.url}}" alt=""></a>
+          </div>
+          <div class="product-content">
+            <h4><a href="/agents_details/{{x.pk}}/" class="text-uppercase">{{x.name}}</a></h4>
+            <p><span>{{x.position}}</span></p>
+          </div>
+          <div class="agent-info">
+            <!--<p>Experience: {{x.exprience}} years</p>-->
+            <p>Languages: {{x.language}}</p>
+          </div>
+       	<div class="agetnt-whatsp">
+			   <a href="https://wa.me/1234567890" class="">
+			   	<i class="fab fa-whatsapp"></i></a>
+       	</div>
+        </div>
+         {% endfor %}
+      </div>
+   </div>
+</section>
+
+
+
+
+<!--<section class="blog tp-space">-->
+<!--  <div class="container">-->
+<!--    <div class="heading new-head">-->
+<!--      <div class="heading-icon">-->
+<!--        <img src="{% static 'assets/images/heading-icon.png' %}" alt="">-->
+<!--      </div>-->
+<!--      <div class="heading-content">-->
+<!--        <h3>News & Blogs</h3>-->
+<!--        <p>Unlocking Real Estates Secrets: Read your News and Blogs Today.</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+
+<!--      {% for x in blogs|slice:":3" %}-->
+<!--      {% if x.status == 1 %}-->
+      
+
+<!--      <div class="col-lg-4 col-md-6 col-sm-6">-->
+<!--        <div class="product-innr blog-innr">-->
+<!--          <div class="product-img">-->
+<!--            <img src="{{x.photo.url}}" alt="">-->
+<!--          </div>-->
+<!--          <div class="product-content">-->
+<!--            <h4><a href="javascript:void(0);">{{x.blog_name|slice:":30"}}...</a></h4>-->
+<!--            <p class="testi-desc">{{x.desc|slice:":400"}}...............</p>-->
+<!--            <p><span>{{x.date}}</span></p>-->
+<!--          </div>-->
+<!--          <div class="blog-btn">-->
+<!--            <a href="blog_details/{{x.pk}}">Read More</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      {% endif %}-->
+<!--      {% endfor %}-->
+      
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--<section class="ofc-location tp-space pb-0">-->
+<!--  <div class="container">-->
+<!--    <div class="heading new-head">-->
+<!--      <div class="heading-icon">-->
+<!--        <img src="{% static 'assets/images/heading-icon.png' %}" alt="">-->
+<!--      </div>-->
+<!--      <div class="heading-content">-->
+<!--        <h3>Visit Our office</h3>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class=" owl-carousel owl-theme" id="location-slider">-->
+
+
+<!--      {% for x in office_images %}-->
+<!--      {% if x.status == 1 %}-->
+<!--      <div class="item location-innr">-->
+<!--        <img src="{{x.office_images.url}}" alt="">-->
+<!--      </div>-->
+<!--      {% endif %}-->
+<!--      {% endfor %}-->
+
+      
+<!--    </div>-->
+<!--    <div class="text-center">-->
+<!--          <a href="https://www.google.com/maps/d/viewer?mid=1bf4qwgGAMWSKS2N2GnGJRONqRTs&hl=en_US&ll=40.74393298737726%2C-73.967833&z=12" class="ofc-btn">-->
+<!--            <i class="far fa-map-marker-alt me-2"></i> View On MAP-->
+<!--          </a>-->
+<!--        </div>-->
+<!--  </div>-->
+<!--</section>-->
+<!--<section class="cta-sec tp-space">-->
+<!--  <div class="container">-->
+<!--    <div class="heading new-head">-->
+<!--      <div class="heading-icon">-->
+<!--        <img src="{% static 'assets/images/heading-icon.png' %}" alt="">-->
+<!--      </div>-->
+<!--      <div class="heading-content">-->
+<!--        <h3>Advisory Experts</h3>-->
+<!--        <p>Fill form below and our agent will contact you shortly</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-12">-->
+<!--        <div class="cta-innr">-->
+<!--          <form action="/contact/" method = "post" class="row" id="contact-form">-->
+<!--            {% csrf_token %}-->
+<!--            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">-->
+<!--              <input type="text" name="name" class="form-control" placeholder="Enter Name">-->
+<!--            </div>-->
+<!--            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">-->
+<!--              <input type="number" name="phone" class="form-control" placeholder="Enter Phone Number">-->
+<!--            </div>-->
+<!--            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">-->
+<!--              <input type="email" name="email" class="form-control" placeholder="Enter Email Adderss">-->
+<!--            </div>-->
+<!--            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">-->
+<!--              <button class="thm-btn w-75" type="submit">Send</button>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--          <div class="row justify-content-center">-->
+<!--            <div class="col-lg-4">-->
+<!--              <div class="product-social">-->
+<!--                <a href="tel:+1234567890"><i class="far fa-phone fa-rotate-90"></i></a>-->
+<!--                <a href="https://wa.me/+1234567890?text=Hello%20there!"><i class="fab fa-whatsapp"></i></a>-->
+<!--                <a href="mailto:example@email.com"><i class="far fa-envelope"></i></a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+
+
+
+
+
+{% endblock body %}
+
+
+
+

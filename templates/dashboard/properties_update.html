@@ -1,0 +1,241 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Properties-Update{% endblock %}</title>
+{% block body %}
+
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Properties Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Properties Management</li>
+            <li class="breadcrumb-item active">Edit Properties</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h5>Properties Management</h5>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" action="" method="post" novalidate="" enctype="multipart/form-data">
+              
+              {% csrf_token %}
+             
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="id_name">title</label>
+                  <input class="form-control" type="text"  name="title" value="{{object.title}}" maxlength="155" required id="id_name">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_position">property_location</label>
+                  <input class="form-control" type="text"  name="property_location" value="{{object.property_location}}"  maxlength="155" required id="id_position">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_total_area">total_area</label>
+                  <input class="form-control" type="number" name="total_area" value="{{object.total_area}}" required id="id_total_area">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_specialization">property_type</label>
+                  <select name = "property_type"  class="form-select"  required id="id_specialization">
+                    
+                    <option {% if object.property_type == "Apartments" %} selected='selected' {% endif %} value='Apartments'>Apartments</option>                  
+                    <option {% if object.property_type == "villa" %} selected='selected' {% endif %} value='villa'>villa</option>                  
+                    <option {% if object.property_type == "Penthouses" %} selected='selected' {% endif %} value='Penthouses'>Penthouses</option>
+                    <option {% if object.property_type == "Townhouses" %} selected='selected' {% endif %} value='Townhouses'>Townhouses</option>
+                    <option {% if object.property_type == "Duplexes" %} selected='selected' {% endif %} value='Duplexes'>Duplexes</option>                  
+                    <option {% if object.property_type == "Plots" %} selected='selected' {% endif %} value='Plots'>Plots</option>
+                    <option {% if object.property_type == "Offices" %} selected='selected' {% endif %} value='Offices'>Offices</option>
+                </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_language">Rate</label>
+                  <input class="form-control" type="number"  name="rate" value="{{object.rate}}" maxlength="155" required id="id_language">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_bedroom">bedroom</label> 
+                  <input class="form-control" type="number"  name="bedroom" value="{{object.bedroom}}" maxlength="155" required id="id_bedroom">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_bedroom">bathroom</label> 
+                  <input class="form-control" type="number"  name="bathroom" value="{{object.bathroom}}" maxlength="155" required id="id_bedroom">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Rent/Buy</label>
+                  <select name = "rent"  class="form-select">
+                    <option {% if object.rent == "Buy" %} selected='selected' {% endif %} value='Buy'>Buy</option>
+                    <option {% if object.rent == "Rent" %} selected='selected' {% endif %} value='Rent'>Rent</option>
+                    <option {% if object.rent == "Sell" %} selected='selected' {% endif %} value='Sell'>Sell</option>
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Status</label>
+                  <select name = "status"   class="form-select">
+                    <option {% if object.status == 1 %} selected='selected' {% endif %} value='1'>Active</option>
+                      <option {% if object.status == 0 %}selected='selected' {% endif %} value='0'>Inactive</option>
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Assign Agents</label>
+                  <select name = "assign_agents"  class="form-select">
+                     
+                    {% for x in agents %}
+                    <option {% if object.assign_agents == x.pk %} selected='selected' {% endif %} value='{{x.pk}}'>{{x.name}}</option>
+                    <!-- <option value="{{x.pk}}">{{x.name}}</option> -->
+                    {% endfor %}
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="id_photo">Properties Image</label>
+                  <input class="form-control" type="file" name="photo" multiple  id="imageInput">
+                  {% for x in pro_images %}
+                  <div class="d-flex" id ="imagePreview">
+                  <img  class="form-control   img-100"   src="{{x.photo.url}}" alt="{{ x.photo }}"></div>
+                  {% endfor %}
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_photo">dispaly Image</label>
+                  <input class="form-control" type="file" name="display_images"  id="id_photo">
+                  {% if object.display_images %}
+                  <img class="form-control img-100" src="{{ object.display_images.url }}" alt="{{ object.display_images }} Image"><br>
+                  {% endif %}
+                  <div class="valid-feedback">Looks good!</div>
+               </div>
+                
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Indoor</label>
+                  <fieldset>
+                    {% for choice in form.fields.indoor.choices %}
+                    <input  type="checkbox" class="" value="{{ choice.0 }}"  name="indoor"
+                    {% if choice.0 in list_indoor   %} checked='checked' {% endif %} />
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    {% endfor %}   
+
+                </fieldset>
+                </div>
+
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Outdoor{{list_indoor}}</label>
+                  <fieldset>
+                    
+                    {% for choice in form.fields.outdoor.choices %}
+                    
+                    <input type="checkbox" class="" value="{{ choice.0 }}"  name="outdoor"
+                    {% if choice.0 in list_outdoor  %} checked='checked' {% endif %}/>  
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    
+                    {% endfor %}
+                </fieldset>
+                </div>
+
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Lot</label>
+                  <fieldset>
+                    {% for choice in form.fields.lot.choices %}
+                    <input type="checkbox" class="" value="{{ choice.0 }}"  name="lot"
+                    {% if choice.0 in list_lot  %} checked='checked' {% endif %} />
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    {% endfor %}                         
+                </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label" for="id_desc">Description</label>
+                  <textarea cols="30" rows="10" class="form-control" name="desc" required id="id_desc">{{object.desc}}</textarea>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+
+                <div class="mb-3">
+                <div class="form-check">
+                  <div class="checkbox p-0">
+                    <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                  </div> 
+                  <div class="invalid-feedback">You must agree before submitting.</div>
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </div>
+              </div>
+              
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

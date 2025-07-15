@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+title>{% block title %}SM- Comparission{% endblock %}</title>
+{% block body %}
+
+<section class="compression mn-h space">
+	<div class="container">
+		<!-- <h3 class="subhead text-center">Comparison of Listings</h3>
+		<a href="/clear_session_list_comp/" id ="clear-button"  class="primary-clr fz-16 fw-400">Remove All</a> -->
+		<h3 class="subhead d-flex justify-content-between text-white text-center">Comparison of Listings 
+			<a href="/clear_session_list_comp/" id ="clear-button"  class="primary-clr fz-16 fw-400">Remove All</a></h3>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="compression-innr">
+					<div class="table-responsive">
+
+
+						
+
+                       
+
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td >Listing</td>
+									{% for x in comp %}
+									<td>
+										<div class="compression-img">
+											<img src="{{x.photo.url}}" alt="">
+											<p>{{x.title|truncatewords:8}} </p>
+											<a href="/add_to_comparission/{{x.pk}}/" class="compression-remove"   ><button><i class="far fa-times"></i></button></a>
+											
+										</div>
+									</td>
+									{% endfor %}
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Price</td>
+									{% for x in comp %}
+									<td>EUR {{x.rate}}</td>
+									{% endfor %}
+									
+								</tr>
+								<tr>
+									<td>Bedrooms</td>
+									{% for x in comp %}
+									<td>{{x.bedroom}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Bathrooms</td>
+									{% for x in comp %}
+									<td>{{x.bathroom}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Size ( sq.ft)</td>
+									{% for x in comp %}
+									<td>{{x.total_area}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Size ( sq.m)</td>
+									{% for x in comp %}
+									<td>{{x.total_area}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Location</td>
+									{% for x in comp %}
+									<td>{{x.property_location}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Furnished</td>
+									{% for x in comp %}
+									<td>Furnished</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Property Type</td>
+									{% for x in comp %}
+									<td>{{x.property_type}}</td>
+									{% endfor %}
+								</tr>
+								<tr>
+									<td>Penthouse</td>
+									{% for x in comp %}
+									<td>{{x.property_type}}</td>
+									{% endfor %}
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="cta-sec tp-space">
+	<div class="container">
+		<div class="heading new-head">
+			<div class="heading-icon">
+				<img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+			</div>
+			<div class="heading-content">
+				<h3>Advisory Experts</h3>
+				<p>Fill form below and our agent will contact you shortly</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="cta-innr">
+					<form action="/contact/", method = "post" class="row" id="contact-form">
+						{% csrf_token %}
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						  <input type="text" name="name" class="form-control" placeholder="Enter Name">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						  <input type="number" name="phone" class="form-control" placeholder="Enter Phone Number">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						  <input type="email" name="email" class="form-control" placeholder="Enter Email Adderss">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						  <button class="thm-btn w-75" type="submit">Send</button>
+						</div>
+					  </form>
+					<div class="row justify-content-center">
+						<div class="col-lg-4">
+							<div class="product-social">
+								<a href="tel:+1234567890"><i class="far fa-phone fa-rotate-90"></i></a>
+								<a href="https://wa.me/+1234567890?text=Hello%20there!"><i class="fab fa-whatsapp"></i></a>
+								<a href="mailto:example@email.com"><i class="far fa-envelope"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock body %}

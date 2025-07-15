@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<form class="d-flex" role="search" method="POST" action="/search/">
+		{% csrf_token %}
+		<input
+			class="form-control me-2"
+			type="search"
+			placeholder="Search for something"
+			name="search_query"
+			 aria-label="Search"
+		>
+		<input
+			class="form-control me-2"
+			type="search"
+			placeholder="Search for something EMAIL"
+			name="search_query_email"
+			 aria-label="Search"
+		>
+		<button class="btn btn-outline-success" type="submit">Search</button>
+	 </form>
+	{% if query %}
+    <div>
+        <div>
+        <!-- loop through search query -->
+        {% for post in posts %}
+            <div>
+                <!-- return search query -->
+                <p>{{post.name}}</p>
+				<p>{{post.email}}</p>
+				<p>{{post.phone}}</p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <!-- return a message if the user does not enter a search query -->
+    <h1>Please enter a search query</h1>
+{% endif %}
+	
+</body>
+</html>

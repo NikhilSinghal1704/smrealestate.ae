@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Off-Plan-Properties{% endblock %}</title>
+{% block body %}
+
+
+ <section class="bannr-sec property-bnner">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12 col-sm-12">
+				<div class="bannr-content text-center">
+					<h1 class="text-white">Real estate Off Plan Properties in Dubai</h1>
+					<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="tp-space off-plan">
+	<div class="container">
+	
+		<h3 class="subhead text-center"> Off Plan Properties In Dubai</h3>
+		
+		<div class="row">
+            {% for x in  properties %}
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="product-innr">
+					<div class="product-img">
+						<img src="{{x.images.url}}" alt="">
+					</div>
+					<div class="off-plan-content">
+						<h5><a href="/off_plan/{{x.locations}}/{{x.name}}/{{x.pk}}/">{{x.name}}</a></h5>
+						<p>
+							<a href="/{{x.locations}}/">
+								<i class="fas fa-map-marker-alt me-1"></i>{{x.locations}}</a></p>
+					</div>
+					<div class="off-plan-badge">
+						<a href="/apartment_properties/">Apartments</a>
+						<a href="/panthouse_properties/">Penthouses</a>
+						<a href="/villa_properties/">Villas</a>
+					</div>
+					<div class="product-type">
+						<span href="#" class="white product-badge">{{x.payment_plan}}</span>
+						<span href="#" class="white product-badge">Handover {{x.handover}}</span>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			</div>
+			
+			<div class="col-lg-12 text-center">
+				<div class="cstm-pagination ">
+					<ul class="pagination">
+						{% if properties.has_previous %}
+						<li class="page-item prev"><a class="page-link" href="?page={{ properties.previous_page_number }}">Previous</a></li>
+						{% endif %}
+						<li class="page-item"><a class="page-link active" href="javascript:void(0);">{{ properties.number }}</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);">of</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);">{{ properties.paginator.num_pages }}</a></li>
+						{% if properties.has_next %}
+						<li class="page-item next"><a class="page-link" href="?page={{ properties.next_page_number }}">Next</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+</section>
+<section class="cta-sec tp-space">
+	<div class="container">
+		<div class="heading new-head">
+			<div class="heading-icon">
+				<img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+			</div>
+			<div class="heading-content">
+				<h3>Advisory Experts</h3>
+				<p>Fill form below and our agent will contact you shortly</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="cta-innr">
+					<form action="/contact/", method = "post" class="row" id="contact-form">
+						{% csrf_token %}
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="text" name="name" class="form-control" placeholder="Enter Name">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="number" name="phone" class="form-control" placeholder="Enter Phone Number">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="email" name="email" class="form-control" placeholder="Enter Email Adderss">
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<button class="thm-btn w-75" type="submit">Send</button>
+						</div>
+					</form>
+					<div class="row justify-content-center">
+						<div class="col-lg-4">
+							<div class="product-social">
+								<a href="tel:+1234567890">
+									<i class="far fa-phone fa-rotate-90"></i></a>
+								<a href="https://wa.me/+1234567890?text=Hello%20there!">
+									<i class="fab fa-whatsapp"></i></a>
+								<a href="mailto:example@email.com">
+									<i class="far fa-envelope"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>		
+<script>
+	 $(document).ready(function() {
+	$('.fav').onclick(function(){
+		alert('helllo')
+	})})
+</script> -->
+
+		{% endblock body %}

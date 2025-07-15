@@ -1,0 +1,122 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Properties-List{% endblock %}</title>
+{% block body %}
+  
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Properties Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Properties Management</li>
+            <li class="breadcrumb-item active">Properties List</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Base styles-->
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Properties List</h5>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="display" id="example-style-1">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Properties Image</th>
+                    <th>Title</th>
+                    <th>Property Location</th>
+                    <th>bedroom</th>
+                    <th>bathroom</th>
+                    <th>property Type</th>
+                    <th>Total Area</th>
+                    <th>Rate</th>
+                    <th>Assign Agents</th>
+                    <th>Indoor</th>
+                    <th>Outdoor</th>
+                    <th>Lot</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for x in properties %}
+                  <tr>
+                    <td>{{x.pk}}</td>
+                    <td><img class="img-50" src="{{x.display_images.url}}" alt=""></td>
+                    <td>{{x.title}}</td>
+                    <td>{{x.property_location}}</td>
+                    <td>{{x.bedroom}}</td>
+                    <td>{{x.bathroom}}</td>
+                    <td>{{x.property_type}}</td>
+                    <td>{{x.total_area}}</td>
+                    <td>{{x.rate}}</td>
+                    <td>{{x.assign_agents}}</td>
+                    <td>{{x.indoor}}</td>
+                    <td>{{x.outdoor}}</td>
+                    <td>{{x.lot}}</td>
+                    <td>
+                      <p>{% if x.status == 0 %}   
+                        <a href="javascript:void(0);" class="btn btn-primary">
+                          InActive
+                        </a>                                               
+                      {% else %}                       
+                      <a href="javascript:void(0);" class="btn btn-primary-light">
+                        Active
+                      </a>                     
+                        {% endif %}
+                        </p>
+                    </td>
+                    <td>
+                      <a href="/dashboard/propertiesdelete/{{x.pk}}/"><i class="fa fa-trash"></i></a>
+                      <a href="/dashboard/propertiesdetails/{{x.pk}}/"><i class="fa fa-eye"></i></a>
+                      <a href="/dashboard/propertiesupdate/{{x.pk}}/"><i class="fa fa-pencil"></i></a>
+                    </td>
+                    
+                  </tr>
+
+                  {% endfor %}
+
+                  
+                </tbody>
+               
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+{% endblock body %}

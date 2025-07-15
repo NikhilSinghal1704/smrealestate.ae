@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- About{% endblock %}</title>
+{% block body %}
+
+<section class="bannr-sec about" style="background-image: url('{% static "assets/images/about-bnnr.png"%}')";>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bannr-content text-center">
+                    <h1 class="text-white">About Us</h1>
+                    <h5 class="fz-18 fw-400 text-white">Making Your Real Estate Dreams</h5>
+					<!--<p>Our real estate agency is a business that specializes in helping clients buy, sell, or rent properties. Real estate agencies employ licensed real e										state agents who are trained and knowledgeable about the real estate market in a specific area. We also help clients negotiate the terms of a sale or purchase
+					</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-sec tp-space">
+	<div class="container">
+		<div class="heading">
+			<div class="heading-icon">
+				<img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+			</div>
+			<div class="heading-content">
+				<h3>Who we are</h3>
+				<h6 class="text-white">Making Your Real Estate Dreams</h6>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+				<div class="about-lft-img">
+					<img src="{% static 'assets/images/about-img-01.png' %}" alt="">
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-6 col-sm-6">
+				<!--{% for x in about %}
+				<p class="mb-5">{{x.description}}</p>
+				{% endfor %}-->
+				<p>Welcome to Super Moda Real Estate, where elegance finds its address and luxury is defined by an unwavering commitment to excellence. At Super Moda, we craft more than homes; we create living masterpieces that resonate with sophistication and timeless allure. Our foundation is built on a vision of redefining the paradigm of real estate, where each property tells a story of opulence, innovation, and personalized luxury.</p>
+				<p>With an artisan's touch, we curate spaces that transcend the ordinary, fusing architectural brilliance with an innate understanding of our clients' desires. Every Super Moda residence is a testament to our dedication to craftsmanship, seamlessly blending aesthetics and functionality. From sleek urban sanctuaries to sprawling estates, each property bears the signature of distinction, setting a new standard for refined living.</p>
+				<p>Our commitment extends beyond the confines of exquisite design; it encompasses a philosophy of sustainability, community, and a pledge to provide an unparalleled client experience. Super Moda Real Estate invites you to embrace a lifestyle where every home is a sanctuary, every detail is intentional, and every moment is an ode to refined living. Welcome to a world where elegance meets innovation—welcome to Super Moda Real Estate.</p>
+				<!--<a href="/contact/" class="thm-btn">Inquiry Now</a>-->
+			</div>
+			<div class="col-lg-12 about-count">
+				<ul class="row g-2 justify-content-center">
+					<li class="col-lg-3 col-md-3 col-sm-4 col-6">
+						<div class="about-count-innr">
+							<h4 class="text-white"><span class="counter">{{agents|length}}</span> +</h4>
+							<p>AGENTS</p>
+						</div>
+					</li>
+					<li class="col-lg-3 col-md-3 col-sm-4 col-6">
+						<div class="about-count-innr">
+							<h4 class="text-white"><span class="counter">{{properties|length}}</span> +</h4>
+							<p>PROPERTIES</p>
+						</div>
+					</li>
+					<li class="col-lg-3 col-md-3 col-sm-4 col-6">
+						<div class="about-count-innr">
+							<h4 class="text-white"><span class="counter">100</span> +</h4>
+							<p>LANGUAGES</p>
+						</div>
+					</li>
+					<li class="col-lg-3 col-md-3 col-sm-4 col-6">
+						<div class="about-count-innr">
+							<h4 class="text-white"><span class="counter">{{review|length}}</span> +</h4>
+							<p>REVIEW</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+			
+			<!--<div class="col-lg-5 d-xl-block d-none">
+				<div class="about-rgt-img">
+					<img src="{% static 'assets/images/about-img-02.png' %}" alt="" class="img-fluid">
+					<img src="{% static 'assets/images/about-img-03.png' %}" alt="" class="border-img img-fluid">
+				</div>
+			</div>-->
+	</div>
+</section>
+    <section class="service-sec tp-space">
+        <div class="container">
+            <h3 class="srvc-head text-center">Our Services</h3>
+            <div class="service-bnnr">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 pe-lg-0 pe-xl-0">
+                        <div class="service-bnnr-img">
+                            <img src="{% static 'assets/images/service-bnnr-01.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="service-bnnr-cntnt">
+                            <h4>Consulting</h4>
+							<p>At Super Moda Real Estate, our journey begins with understanding your unique vision and aspirations. Our seasoned consultants offer expert 									guidance, leveraging their deep industry knowledge to provide insights that empower you to make informed decisions. Whether you're a seaso									ned investor or a first-time homebuyer, our consulting services are tailored to guide you through every step of the real estate journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-bnnr">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="service-bnnr-cntnt">
+							<h4>Purchasing Property</h4>
+							<p>Elevate your real estate acquisition experience with Super Moda. Our dedicated team is committed to sourcing properties that align with you									r preferences, lifestyle, and investment goals. From luxurious residences to strategic commercial spaces, our purchasing services ensure a 								seamless and rewarding transaction, backed by meticulous research and negotiation expertise.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 ps-lg-0 ps-xl-0">
+                        <div class="service-bnnr-img">
+                            <img src="{% static 'assets/images/service-bnnr-02.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-bnnr">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 pe-lg-0 pe-xl-0">
+                        <div class="service-bnnr-img">
+                            <img src="{% static 'assets/images/service-bnnr-03.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="service-bnnr-cntnt">
+							<h4>Selecting and Viewing Property:</h4>
+							<p>Embark on a personalized property exploration curated for you. Our experts meticulously select and present properties that align with your 									criteria. With a keen eye for detail and a commitment to your preferences, we ensure that every property viewing is a tailored experience, 								allowing you to envision your future in spaces that resonate with your style and needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="service-bnnr">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="service-bnnr-cntnt">
+							<h4>Property and Business Management:</h4>
+							<p>Super Moda extends its commitment beyond acquisition with comprehensive property and business management services. From maintaining the aes									thetic appeal of your property to handling intricate business considerations, our management solutions are designed to optimize your real 									estate investment. Trust us to safeguard your assets, streamline operations, and enhance the overall value of your portfolio.</p>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 ps-lg-0 ps-xl-0">
+						<div class="service-bnnr-img">
+							<img src="{% static 'assets/images/service-bnnr-02.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="service-bnnr">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-6 pe-lg-0 pe-xl-0">
+						<div class="service-bnnr-img">
+							<img src="{% static 'assets/images/service-bnnr-03.png' %}" alt="">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="service-bnnr-cntnt">
+							<h4>Renting Property</h4>
+							<p>Unlock the potential of your property investment with our expert rental services. Whether you're seeking long-term tenants or exploring sho									rt-term leasing options, our team is dedicated to maximizing your property's earning potential. From market analysis to tenant screening, 									Super Moda ensures a hassle-free rental experience, allowing you to enjoy the returns on your investment with peace of mind.</p>
+							<p>At Super Moda Real Estate, our services transcend traditional expectations, offering a holistic approach that caters to your every real est									ate need. From consultation to property management, we are your trusted partner, committed to elevating your real estate experience to unp									recedented heights. Welcome to a realm where service is not just a commitment but a signature of excellence—welcome to Super Moda Real Estate.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </section>
+<section class="cta-sec tp-space">
+    <div class="container">
+        <div class="heading new-head">
+            <div class="heading-icon">
+                <img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+            </div>
+            <div class="heading-content">
+                <h3>Advisory Experts</h3>
+                <p>Fill form below and our agent will contact you shortly</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-innr">
+					<form autocomplete="off" action="/contact/", method = "post" class="row" id="contact-form">
+                        {% csrf_token %}
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="text" name="name" class="form-control" placeholder="Enter Name" autocomplete="false">
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="number" name="phone" class="form-control" placeholder="Enter Phone Number" autocomplete="false">
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+							<input type="email" name="email" class="form-control" placeholder="Enter Email Adderss" autocomplete="false">
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+                          <button class="thm-btn w-75" type="submit">Send</button>
+                        </div>
+                      </form>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4">
+                            <div class="product-social">
+                                <a href="tel:+1234567890"><i class="far fa-phone fa-rotate-90"></i></a>
+                                <a href="https://wa.me/+1234567890?text=Hello%20there!"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:example@email.com"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

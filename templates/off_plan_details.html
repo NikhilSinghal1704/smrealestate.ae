@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Off Plan Detils{% endblock %}</title>
+{% block body %}
+
+<section class="space mn-h bkng">
+			<div class="container">
+				
+				<div class="row">
+					
+					<div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+						<div class="property-dtl">
+							
+							<div class="property-gllery">
+								<div class="row g-2">
+									<div class="col-lg-6 col-md-6 col-sm-6 frst-img">
+										<img src="{{properties.images.url}}" alt="">
+										<img src="{{properties.images.url}}" alt="">
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6">
+										<div class="owl-carousel owl-theme gallery-slider" id="gallery-slider">
+											{% for x in images %}
+											<div class="item">
+												<img src="{{x.photo.url}}" alt="" class="w-100">
+											</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<h4 class="property-nme">About The Acres</h4>
+							<div class="dble-brdr off-plan-abt">
+								<ul class="off-plan-abt-list">
+									<li>
+										<h4>{{properties.starting_price}} AED</h4>
+										<p>Starting Price from</p>
+									</li>
+									<li>
+										<h4>{{properties.units}}</h4>
+										<p>Available Units</p>
+									</li>
+									<li>
+										<h4>{{properties.starting_area}}</h4>
+										<p>Area from (sq. ft.)</p>
+									</li>
+									<li>
+										<h4>{{properties.handover}} Q4</h4>
+										<p>Handover</p>
+									</li>
+								</ul>
+							</div>
+							
+							<div class="property-desc mt-2">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Description</h4>
+								<p>{{properties.description}}</p>
+								<h5 class="valid-price">*The price is valid for {{properties.price_valid}}</h5>
+							</div>
+							
+							<div class="prprty-list-dtl p-10">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Property Information</h4>
+								<div class="row">
+									<div class="col-lg-6 col-md-6">
+										<table class="table table-bordered text-secondary">
+											<tbody>
+												<tr>
+													<td>Location</td>
+													<td><a href="javascript:void(0);" class="primary-clr">{{properties.locations}}</a></td>
+												</tr>
+												<tr>
+													<td>Status of Project</td>
+													<td>{{properties.status_of_project}}</td>
+												</tr>
+												<tr>
+													<td>Units</td>
+													<td>{{properties.units}}</td>
+												</tr>
+												<tr>
+													<td>Total Amount of Units</td>
+													<td>{{properties.total_number_flat}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<table class="table table-bordered text-secondary">
+											<tbody>
+												<tr>
+													<td>Developer</td>
+													<td>
+														<a href="javascript:void(0);" class="primary-clr">{{properties.developer}}</a>
+													</td>
+												</tr>
+											
+												<tr>
+													<td>Area from</td>
+													<td>{{properties.starting_area}}sq. ft.</td>
+												</tr>
+												<tr>
+													<td>Payment Plan</td>
+													<td>{{properties.payment_plan}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="off-plan-tabs">
+								<ul class="nav">
+									<li class="nav-item">
+										<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#off-plan-tab-01" type="button">1 BR</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-toggle="tab" data-bs-target="#off-plan-tab-02" type="button">2 BR</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-toggle="tab" data-bs-target="#off-plan-tab-03" type="button">3 BR</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-toggle="tab" data-bs-target="#off-plan-tab-04" type="button">4 BR</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-toggle="tab" data-bs-target="#off-plan-tab-05" type="button">5 BR</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-toggle="tab" data-bs-target="#off-plan-tab-06" type="button">6 BR</button>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane fade show active" id="off-plan-tab-01" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "1 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} EUR </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+									<div class="tab-pane fade" id="off-plan-tab-02" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "2 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} AED </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+
+									</div>
+									<div class="tab-pane fade" id="off-plan-tab-03" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "3 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} EUR </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+									<div class="tab-pane fade" id="off-plan-tab-04" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "4 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} EUR </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+									<div class="tab-pane fade" id="off-plan-tab-05" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "5 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} EUR </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+									<div class="tab-pane fade" id="off-plan-tab-06" role="tabpanel">
+										<div class="row justify-content-center">
+											{% for x in  flatplan %}
+											{% if x.flat_type == "6 BHK" %}
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-content">
+													<h5>{{x.category}}, {{x.unit_type}}</h5>
+													<p>
+														<span><i class="fal fa-bed me-1"></i>Type :</span>
+														<span>{{x.flat_type}}</span>
+													</p>
+													<p>
+														<span><i class="fal fa-ruler-triangle me-1"></i>Total Area :</span>
+														<span>{{x.total_area}} sq. ft.</span>
+													</p>
+													<p>
+														<span><i class="fas fa-tag me-1"></i>Starting Price :</span>
+														<span> {{x.starting_price_flat}} AED </span>
+													</p>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<div class="off-plan-tabs-innr-img">
+													<img src="{{x.flat_images_models.url}}" alt="">
+												</div>
+											</div>
+											<!-- {% else %} -->
+											<!-- <h4 class="text-center fz-16 fw-600 primary-clr">No Data Found</h4> -->
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="offplan-tble">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Reflection Floor Plans</h4>
+								<table class="table table-bordered table-striped table-dark table-hover">
+									<thead>
+										<tr>
+											<th>Floor Plan</th>
+											<th>Type</th>
+											<th>Unit Type</th>
+											<th>Category</th>
+											<th>Total Area</th>
+											<th>Starting prices</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for x in flatplan %}
+										<tr>
+											<td class="offplan-tble-img">
+												<img src="{{x.flat_images_models.url}}" alt="">
+											</td>
+											<td class="offplan-tble-content">{{x.flat_type}}</td>
+											<td class="offplan-tble-content">{{x.unit_type}}</td>
+											<td class="offplan-tble-content">{{x.category}}</td>
+											<td class="offplan-tble-content">{{x.total_area}} sq. ft.</td>
+											<td class="offplan-tble-content">{{x.starting_price_flat}} AED</td>
+										</tr>
+										{% endfor %}
+										
+									</tbody>
+								</table>
+							</div>
+							<div class="dble-brdr off-plan-abt payment-plan">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Payment Plan</h4>
+								<ul class="off-plan-abt-list">
+									{% for x in paymentplan %}
+							
+									<li>
+										<h4>{{x.persentage_installment}}</h4>
+										<p>{{x.payment_year}}</p>
+									</li>
+							
+									{% endfor %}
+									
+								</ul>
+							</div>
+							<div class="property-location p-10 dble-brdr border-bottom-0">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Location</h4>
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1094.1002417693!2d55.27486914951601!3d25.197210899886063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e1!3m2!1sen!2sin!4v1697021123449!5m2!1sen!2sin" width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+							<div class="property-desc mt-2">
+								<h4 class="fz-20 fw-600 font-2 text-white mb-4">Location Description</h4>
+								<p>{{properties.location_description}}</p>
+							</div>
+							
+						</div>
+					</div>
+					<!-- <div class="col-xl-3 col-lg-4">
+						<div class="profile-card sticky-top">
+							<img src="assets/images/profile-img.png" alt="">
+							<h5 class="text-white">Fatima Ezzahra Elhabib</h5>
+							<p class="m-0">Property Consultant</p>
+							<div class="prfl-card-btn">
+								<a href="javascript:void"><i class="far fa-envelope me-2"></i>Email</a>
+								<a href="javascript:void"><i class="far fa-phone me-2 fa-rotate-90"></i>Call</a>
+								<a href="javascript:void"><i class="fab fa-whatsapp me-2"></i>Whatsapp</a>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>
+				
+			</div>
+		</section>
+
+{% endblock body %}

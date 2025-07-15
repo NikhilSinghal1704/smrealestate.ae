@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<title>{% block title %}SM- Properties{% endblock %}</title>
+
+{% block body %}
+
+
+
+
+
+<section class="bannr-sec agent-abnner">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-8">
+
+        <div class="bannr-content text-center">
+
+          <h1 class="text-white">Real estate agents</h1>
+
+          <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="agent-sec tp-space">
+
+	<div class="container">
+
+		<div class="row align-items-center">
+
+			<div class="col-xl-7 col-lg-8">
+
+				<div class=" owl-carousel owl-theme" id="agent-slider">
+
+
+
+					{% for x in agents %}
+					{% if x.status == 1 %}
+          {% if x.team != "Management"%}
+
+
+					<div class="item">
+
+						<div class="agent-slider-img">
+
+							<a href="/agents_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+
+							<div class="agent-contnt">
+
+								<a href="/agents_details/{{x.pk}}/">
+
+									<h4 class="text-white">{{x.name}}</h4></a>
+
+								<h5>Experience: {{x.exprience}}years</h5>
+
+								<p>Languages:{{x.language}}</p>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+          {% endif %}
+					{% endif %}
+					{% endfor %}
+
+
+
+				</div>
+
+			</div>
+
+			<div class="col-xl-5 col-lg-4">
+
+				<h3 class="expert">Our Expert Team</h3>
+
+				<div class="agent-inqury">
+
+					<div class="heading mb-3">
+
+						<div class="heading-icon">
+
+							<img src="{% static 'assets/images/heading-icon.png' %}" alt="">
+
+						</div>
+
+						<div class="heading-content">
+
+							<h3> We are pleased to present you with our most competitive offer.</h3>
+
+						</div>
+
+					</div>
+
+					<p class="">Welcome to Super Moda Real Estate, where our dedicated agents are committed to delivering unparalleled service in the dynamic world of real estate. Specializing in secondary market, off-plan properties, and rentals, we excel in assisting clients in finding their dream homes in established neighborhoods with rich amenities and thriving communities. Our expertise extends to guiding clients through the exciting process of acquiring a home in a development phase, ensuring a future residence tailored to their preferences. Additionally, our team excels in the rental property market, offering comprehensive support to both landlords and tenants, ensuring seamless real estate experiences and exceptional results.</p>
+
+					<form action="/searchagents/" method="get" class="row">
+
+						<div class="mb-5 mt-4 col-xl-6 col-lg-12 col-md-6 col-sm-6">
+
+							<select name="special" id="" class="form-select">
+
+								<option value="">Specializations</option>
+
+								<option {% if sp == "a" %} selected='selected' {% endif %} value='a'>a</option>
+
+								<option {% if sp == "b" %} selected='selected' {% endif %} value='b'>b</option>
+
+								<option {% if sp == "c" %} selected='selected' {% endif %} value='c'>c</option>
+
+							</select>
+
+						</div>
+
+						<div class="mb-5 mt-4 col-xl-6 col-lg-12 col-md-6 col-sm-6">
+
+							<select name="language" id="" class="form-select">
+
+								<option value="">Language</option>
+
+								<option {% if lan == "Hindi" %} selected='selected' {% endif %} value='Hindi'>Hindi</option>
+
+								<option {% if lan == "English" %} selected='selected' {% endif %} value='English'>English</option>
+
+							</select>
+
+						</div>
+
+						<div class=" col-lg-12">
+
+							<button class="thm-btn w-100" type="search">Search</button>
+
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+<section class="agent-list tp-space">
+
+  <div class="container">
+
+    <div class="agent-list-filter row align-items-center">
+
+      <div class="col-xl-12 col-lg-12">
+
+		  <h4 class="agent-name">Agents</h4>
+
+      </div>
+
+      <!--<div class="col-xl-4 col-lg-6 col-md-8 col-sm-8 col-12">
+
+        <div class="agent-list-filter-frm">
+
+          <form action="/searchagents/"  class="row align-items-center">
+
+            
+
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+
+              <select name="special" id="" class="form-select">
+
+                
+
+               <option {% if sp == 'a' %} selected="selected" {% endif %} value="a">a</option>
+
+                <option {% if sp == 'b' %} selected="selected" {% endif %} value="b">b</option>
+
+                <option {% if sp == 'c' %} selected="selected" {% endif %} value="c">c</option>
+
+
+
+                <option  value="">Specializations</option>
+
+								<option {% if sp == "a" %} selected ="selected" {% endif %} value='a'>a</option>
+
+								<option {% if sp == "b" %} selected ="selected" {% endif %} value='b'>b</option>
+
+								<option {% if sp == "c" %} selected ="selected" {% endif %} value='c'>c</option>
+
+								
+
+              </select>
+
+            </div>
+
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+
+              <select name="language" id="" class="form-select">
+
+                <option value=""> {{form.language.value}} Language</option>
+
+                <option {% if lan == "Hindi" %} selected ="selected"{% endif %} value='Hindi'>Hindi</option>
+
+								<option {% if lan == "English" %} selected ="selected" {% endif %} value='English'>English</option>
+
+              </select>
+
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+
+              <button class="btn" type="search"><i class="far fa-search"></i></button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>-->
+
+    </div>
+
+    <div class="row">
+
+
+
+    {% for x in agents %}
+    {% if x.status  == 1 %}
+    {% if x.team != "Management"%}
+    
+
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+        <div class="product-innr">
+
+          <div class="product-img">
+
+            <a href="/agents_details/{{x.pk}}/" class="text-uppercase"><img src="{{x.photo.url}}" alt=""></a>
+
+          </div>
+
+          <div class="product-content">
+
+            <h4><a href="/agents_details/{{x.pk}}/" class="text-uppercase">{{x.name}}</a></h4>
+
+            <p><span>{{x.position}}</span></p>
+
+          </div>
+
+          <div class="agent-info">
+
+            <!--<p>Experience: {{x.exprience}} years</p>-->
+
+            <p>Languages: {{x.language}}</p>
+
+          </div>
+
+       	<div class="agetnt-whatsp">
+
+			   <a href="https://wa.me/{{x.whatsapp_number}}" class="">
+
+			   	<i class="fab fa-whatsapp"></i></a>
+
+       	</div>
+
+        </div>
+
+      </div>
+
+   
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+
+
+
+
+
+      <div class="col-lg-12 text-center">
+
+        <div class="cstm-pagination ">
+
+          <ul class="pagination">
+
+            {% if agents.has_previous %}
+
+            <li class="page-item prev"><a class="page-link" href="?page={{ agents.previous_page_number }}">Previous</a></li>
+
+            {% endif %}
+
+            
+
+            <li class="page-item"><a class="page-link active" href="javascript:void(0);">{{ agents.number }}</a></li>
+
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">of</a></li>
+
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">{{ agents.paginator.num_pages }}</a></li>
+
+            {% if agents.has_next %}
+
+            <li class="page-item next"><a class="page-link" href="?page={{ agents.next_page_number }}">Next</a></li>
+
+            
+
+            {% endif %}
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock body %}

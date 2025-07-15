@@ -1,0 +1,265 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Add-Properties{% endblock %}</title>
+{% block body %}
+
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Properties Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Properties Management</li>
+            <li class="breadcrumb-item active">Add Properties</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h5>Properties Management</h5>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" action="" method="post" novalidate="" enctype="multipart/form-data">
+              
+              {% csrf_token %}
+             
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="id_name">title</label>
+                  <input class="form-control" type="text"  name="title" maxlength="155" required id="id_name">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_position">property_location</label>
+                  <input class="form-control" type="text"  name="property_location" maxlength="155" required id="id_position">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_total_area">total_area</label>
+                  <input class="form-control" type="number" name="total_area" required id="id_total_area">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_specialization">property_type</label>
+                  <select name = "property_type"  class="form-select" required id="id_specialization">
+                    <option value="" selected>---------</option>
+                    <option value="Apartments">Apartments</option>                  
+                    <option value="villa">villa</option>                  
+                    <option value="Penthouses">Penthouses</option>
+                    <option value="Townhouses">Townhouses</option>
+                    <option value="Duplexes">Duplexes</option>                  
+                    <option value="Plots">Plots</option>
+                    <option value="Offices">Offices</option>
+                </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_language">Rate</label>
+                  <input class="form-control" type="number"  name="rate" maxlength="155" required id="id_language">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_bedroom">bedroom</label> 
+                  <select name="bedroom"  class="form-select">
+                    <option value="" selected>---------</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_bedroom">bathroom</label> 
+                  <select name="bathroom"  class="form-select">
+                    <option value="" selected>---------</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Rent/Buy</label>
+                  <select name = "rent"  class="form-select">
+                    <option value="Buy"  >Buy</option>
+                    <option value="Rent" >Rent</option>
+                    <option value="Sell" >Sell</option>
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Status</label>
+                  <select name = "status"   class="form-select">
+                    <option value="1"  >Active</option>
+                    <option value="0" >Inactive</option>
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Assign Agents</label>
+                  <select name = "assign_agents"  class="form-select">
+                    {% for x in agents %}
+                    <option value="{{x.pk}}">{{x.name}}</option>
+                    {% endfor %}
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="img-input">Properties Image</label>
+                  <input class="form-control" type="file" name="photo" multiple  id="imageInput">
+                  <!-- <img class="img-100" id="display-img"/> -->
+                  <div class="d-flex" id ="imagePreview"></div>
+                  <div class="valid-feedback">{{error}}Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="img-input">Display Properties Image</label>
+                  <input class="form-control" type="file" name="display_images"  id="img-input">
+                  <img class="img-100" id="display-img"/>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+                
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Indoor</label>
+                  <fieldset>
+                    {% for choice in form.fields.indoor.choices %}
+                    <input type="checkbox" class="" value="{{ choice.0 }}"  name="indoor"/>
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    {% endfor %}   
+
+                </fieldset>
+                </div>
+
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Outdoor</label>
+                  <fieldset>
+                    {% for choice in form.fields.outdoor.choices %}
+                    <input type="checkbox" class="" value="{{ choice.0 }}"  name="outdoor"/>
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    {% endfor %}                    
+                </fieldset>
+                </div>
+
+                <div class="col-md-6 ">
+                  <label class="col-form-label">Lot</label>
+                  <fieldset>
+                    {% for choice in form.fields.lot.choices %}
+                    <input type="checkbox" class="" value="{{ choice.0 }}"  name="lot"/>
+                    <label class="form-label" for="">{{ choice.1 }}</label><br>
+                    {% endfor %}                  
+                </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label" for="id_desc">Description</label>
+                  <textarea cols="30" rows="10" class="form-control" name="desc" required id="id_desc"></textarea>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                     {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} mt-3">
+                        {{ message }}
+                        </div>
+                    {% endfor %}    
+                    
+                <div class="mb-3">
+                <div class="form-check">
+                  <div class="checkbox p-0">
+                    <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                  </div> 
+                  <div class="invalid-feedback">You must agree before submitting.</div>
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </div>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

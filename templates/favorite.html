@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Favorite{% endblock %}</title>
+{% block body %}
+		<section class="product-sec space favorite-sec">
+			<div class="container">
+				<h3 class="subhead d-flex justify-content-between text-white text-center">Your Favorites
+				<a href="/clear_session_list/" id ="clear-button"  class="primary-clr fz-16 fw-400">Remove All</a>
+				</h3>
+				<div class="row">
+					{% for x in favorite %}
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="product-innr">
+							<div class="product-img">
+								<a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+							</div>
+							<div class="product-content">
+								<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+								<div class="product-amenties">
+									<span>
+										<i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>
+									<span>
+										<i class="fal fa-bath me-1"></i> {{x.bathroom}}</span>
+									<span>
+										<i class="fal fa-ruler-triangle me-1"></i> {{x.total_area}} Sq. Ft.</span>
+								</div>
+								<h4><a href="/properties_details/{{x.pk}}/">{{x.title|slice:":60"}} .....</a></h4>
+								<p>
+									<i class="fas fa-map-marker-alt me-1">{{x.property_location}}</i>
+								</p>
+							</div>
+							<div class="property-agent">
+								<div class="property-agent-img">
+									<a href="#">
+									<img src="{{x.assign_agents.photo.url}}" alt="">
+									</a>
+								</div>
+								<div class="property-agent-info">
+									<h6>{{x.assign_agents.name}}</h6>
+									<p>{{x.assign_agents.position}}</p>
+								</div>
+								<div class="property-agent-whatsapp">
+									<a href="https://wa.me/{{x.assign_agents.whatsapp_number}}">
+										<i class="fab fa-whatsapp"></i></a>
+								</div>
+							</div>
+							<div class="product-type">
+								<a href="#" class="golden product-badge">{{x.rent}}</a>
+								<a href="#" class="dark product-badge">{{x.property_type}}</a>
+							</div>
+							<div class="favorite-icon">
+								<a href="/add_to_favorites/{{x.pk}}/"  class=" golden "  >
+									<i class="far fa-bookmark"></i></a>
+								<a href="javascript:void(0);"  class="comprassion-button dark" data-product-id="{{x.pk}}">
+									<i class="fas fa-sliders-h"></i></a>
+							</div>
+						</div>
+					</div>
+
+
+					
+					{% endfor %}
+					
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="cta-sec tp-space">
+			<div class="container">
+				<div class="heading new-head">
+					<div class="heading-icon">
+						<img src="assets/images/heading-icon.png" alt="">
+					</div>
+					<div class="heading-content">
+						<h3>Advisory Experts</h3>
+						<p>Fill form below and our agent will contact you shortly</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="cta-innr">
+							<form action="/contact/" method = "post" class="row" id="contact-form">
+								{% csrf_token %}
+								<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+								  <input type="text" name="name" class="form-control" placeholder="Enter Name">
+								</div>
+								<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+								  <input type="number" name="phone" class="form-control" placeholder="Enter Phone Number">
+								</div>
+								<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+								  <input type="email" name="email" class="form-control" placeholder="Enter Email Adderss">
+								</div>
+								<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+								  <button class="thm-btn w-75" type="submit">Send</button>
+								</div>
+							  </form>
+							<div class="row justify-content-center">
+								<div class="col-lg-4">
+									<div class="product-social">
+										<a href="tel:+1234567890"><i class="far fa-phone fa-rotate-90"></i></a>
+										<a href="https://wa.me/+1234567890?text=Hello%20there!"><i class="fab fa-whatsapp"></i></a>
+										<a href="mailto:example@email.com"><i class="far fa-envelope"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+
+		{% endblock body %}

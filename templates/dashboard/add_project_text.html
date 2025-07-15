@@ -1,0 +1,133 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Add-Project-Text{% endblock %}</title>
+{% block body %}
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Project Text Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Project Text Management</li>
+            <li class="breadcrumb-item active">Add Project Text</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h5>Project Text Management</h5>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" method="post" novalidate="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row g-3">
+
+                <div class="col-md-12">
+                  <label class="form-label" for="id_desc">Banner Text Description</label>
+                  <textarea cols="30" rows="10" class="form-control"  name="our_project_text" required id="id_desc">{{object.our_project_text}}</textarea>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label" for="id_desc">Banner Text Heading</label>
+                  <input class="form-control"  name="heading" required id="id_desc">
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <label class="form-label" for="img-input">Banner  Images</label>
+                  <input class="form-control" type="file" name="our_project_images"  id="img-input">
+                  <img class="img-100" id="display-img"/>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="id_">Status</label>
+                  <select name = "status"   class="form-select">
+                    <option value="1"  >Active</option>
+                    <option value="0" >Inactive</option>
+                    
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+               
+                     {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} mt-3">
+                        {{ message }}
+                        </div>
+                    {% endfor %}    
+
+                <div class="mb-3">
+                <div class="form-check">
+                  <div class="checkbox p-0">
+                    <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                  </div>
+                  <div class="invalid-feedback">You must agree before submitting.</div>
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

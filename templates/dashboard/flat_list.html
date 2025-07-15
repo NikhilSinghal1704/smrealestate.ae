@@ -1,0 +1,108 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<title>{% block title %}SM- Flat-List{% endblock %}</title>
+{% block body %}
+  
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Properties Management</h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard/index/">Home</a></li>
+            <li class="breadcrumb-item">Properties Management</li>
+            <li class="breadcrumb-item">Flat List</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <!-- Bookmark Start-->
+          <!-- <div class="bookmark">
+            <ul>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                <form class="form-inline search-form">
+                  <div class="form-group form-control-search">
+                    <input type="text" placeholder="Search..">
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div> -->
+          <!-- Bookmark Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Base styles-->
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Flat List</h5>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="display" id="example-style-1">
+                <thead>
+                  <tr>
+                    <th>Flat Image</th>
+                    <th>Flat Name</th>
+                    <th>starting_price_flat</th>
+                    <th>area</th>
+                    <th>Category</th>
+                    <th>Unit Type</th>
+                    <th>Assign Off Plane</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for x in flat %}
+                  <tr>
+                    <td><img class="img-50" src="{{x.flat_images_models.url}}" alt=""></td>
+                    <td>{{x.flat_type}}</td>
+                    <td>{{x.starting_price_flat}}</td>
+                    <th>{{x.total_area}}</th>
+                    <th>{{x.category}}</th>
+                    <th>{{x.unit_type}}</th>
+                    <th>{{x.off_plane_id}}</th>
+                    <td>
+                      <p>{% if x.status == 0 %}   
+                        <a href="javascript:void(0);" class="btn btn-primary">
+                          InActive
+                        </a>                                               
+                      {% else %}                       
+                      <a href="javascript:void(0);" class="btn btn-primary-light">
+                        Active
+                      </a>                     
+                        {% endif %}
+                        </p>
+                    </td>
+                    <td>
+                      <a href="/dashboard/flat_plan_delete/{{x.pk}}/"><i class="fa fa-trash"></i></a>
+                      <a href="/dashboard/flat_plan_details/{{x.pk}}/"><i class="fa fa-eye"></i></a>
+                      <a href="/dashboard/flat_plan_update/{{x.pk}}/"><i class="fa fa-pencil"></i></a>
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+
+                  
+                </tbody>
+               
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+
+{% endblock body %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %}SM- Blog{% endblock %}</title>
+{% block body %}
+
+<section class="blog-sec space pb-0">
+  <div class="container">
+    <div class="blog-sec-innr">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="blog-content">
+            <h1>News & Blogs</h1>
+            <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="blog-list">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        <div class="row">
+
+          {% for x in blog_posts|slice:":3" %}
+          {% if x.status == 1 %}
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="blog-list-innr">
+              <div class="blog-list-innr-img">
+                <img src="{{x.photo.url}}" alt="">
+              </div>
+              <div class="blog-list-innr-cntnt">
+                <p>{{x.desc}} .....</p>
+                <a href="/blog_details/{{x.pk}}/" class="thm-btn">Read More</a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="blog tp-space">
+  <div class="container">
+    <div class="heading new-head">
+      <div class="heading-icon">
+        <img src="assets/images/heading-icon.png" alt="">
+      </div>
+      <div class="heading-content">
+        <h3>News &amp; Blogs</h3>
+        <p>Unlocking Real Estates Secrets: Read your News and Blogs Today.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      {% for x in blog_posts %}
+      {% if x.status == 1 %}
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="product-innr blog-innr">
+          <div class="product-img">
+            <img src="{{x.photo.url}}" alt="">
+          </div>
+          <div class="product-content">
+            <h4><a href="javascript:void(0);">{{x.blog_name}}</a></h4>
+            <p>{{x.desc|slice:":450"}}...............</p>
+            <p><span>{{x.date}}</span></p>
+          </div>
+          <div class="blog-btn">
+            <a href="/blog_details/{{x.pk}}/">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+
+ 
+
+      
+      <div class="col-lg-12 text-center">
+        <div class="cstm-pagination ">
+          <ul class="pagination">
+            {% if blog_posts.has_previous %}
+            <li class="page-item prev"><a class="page-link" href="?page={{ blog_posts.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            
+            <li class="page-item"><a class="page-link active" href="javascript:void(0);">{{ blog_posts.number }}</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">of</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">{{ blog_posts.paginator.num_pages }}</a></li>
+            {% if blog_posts.has_next %}
+            <li class="page-item next"><a class="page-link" href="?page={{ blog_posts.next_page_number }}">Next</a></li>
+            
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+
+
+         
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% endblock body %}
