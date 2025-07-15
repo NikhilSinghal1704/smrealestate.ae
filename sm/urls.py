@@ -23,8 +23,8 @@ from django.views.defaults import page_not_found
 
 
 urlpatterns = [
-    path('index', IndexView.as_view(), name = "Home"),
-    path('', CommingSoon.as_view(), name="CommingSoon"),
+    path('', IndexView.as_view(), name = "Home"),
+    path('comingsoon', CommingSoon.as_view(), name="CommingSoon"),
     path('contact/', ContactView.as_view(), name = "contact" ),
     path('bookappointment/', BookAppointmentView.as_view(), name = "book"),
     path('who_we_are/', AboutView.as_view(), name ="about"),
