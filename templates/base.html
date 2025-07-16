@@ -24,6 +24,9 @@
 		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 		<!-- add sweet alart -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css">
+		 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css">
+  		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 		<style>
 			.tdStyle
 			{
@@ -31,13 +34,300 @@
 			background-repeat:no-repeat;
 			background-size:100%;
 			}
-		</style>
+		 
+    body {font-family:poppins !important;}
+    
+  .new_icon_size{font-size: 25px;
+    margin-bottom: 5px;}
+.banner {
+    width: 100%;
+    height: 100vh;
+    background: url('/web/20250328101832im_/https://smrealestate.ae/media/02.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
 
+.banner-content {
+    text-align: center;
+    /*background: rgba(0, 0, 0, 0.5);*/
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 940px;
+}
 
-		
-	</head>
-	
+h1 {
+    margin-bottom: 20px;
+}
 
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.tab {
+        font-size: x-small;
+    width:130px;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.tab:hover, .tab.active {
+    background: #c1a177;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-bar input, .search-bar select {
+    padding: 10px;
+   
+    border: none;
+ 
+    
+    max-width: 300px;
+}
+.search-bar button {
+       padding: 10px;
+    margin-left: 5px;
+    border: none;
+    /* border-radius: 5px; */
+    width: 100%;
+    max-width: 125px;
+}
+
+.search-bar button {
+    background: #C1a177;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn .fa-search {
+        margin-right: 8px; /* Adjust the value as needed */
+    }
+
+/*.search-bar button:hover {*/
+/*    background: #218838;*/
+/*}*/
+
+/* Responsive Design */
+@media (min-width: 600px) {
+    .search-bar input, .search-bar select {
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-bar {
+        flex-wrap: nowrap;
+    }
+}
+body {
+    font-family: Poppins !important;
+}
+			
+			.tdStyle
+			{
+			background-image:url('/web/20250328101832im_/https://smrealestate.ae/images/sample.JPG');
+			background-repeat:no-repeat;
+			background-size:100%;
+			}
+			ul#abhi li {
+  display:inline;
+  
+}
+.abhi_text_white{
+    color: white;
+    padding: 10px;}
+    
+ .social_abhi   {
+    color: #c1a177;
+    font-size: 35px;
+    margin: 15px;
+}
+
+/* CSS for fade effect on the modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+}
+
+@-webkit-keyframes slideIn {
+  from {top: -300px; opacity: 0;}
+  to {top: 0; opacity: 1;}
+}
+
+@keyframes slideIn {
+  from {top: -300px; opacity: 0;}
+  to {top: 0; opacity: 1;}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+body .modal .bg {
+  height: 35rem;
+  width: 35rem;
+  background-color: #c1a177;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  z-index: -1;
+}
+body .modal .modal-container {
+  padding: 3rem 5rem;
+  background-color: #242b34;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  border-radius: 10px;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.2);
+}
+body .modal .modal-container .modal-top {
+  display: flex;
+  justify-content: space-between;
+  color: #808491;
+}
+body .modal .modal-container .modal-top :nth-child(1) {
+  background-color: #F0F0F3;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+body .modal .modal-container .modal-top :nth-child(2) {
+  font-size: 1.5rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+body .modal .modal-container .modal-body {
+  margin: 1rem 0 1rem 0;
+  padding: 0px;
+}
+body .modal .modal-container .modal-body h2 {
+  font-size: 1.2rem;
+}
+body .modal .modal-container .modal-body p {
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+body .modal .modal-container .modal-form {
+  display: flex;
+  flex-direction: column;
+}
+body .modal .modal-container .modal-form h3 {
+  margin: 0 0 0.6rem 0;
+  padding: 0;
+}
+body .modal .modal-container .modal-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 5px;
+  border-radius: 5px;
+  border: 0.1rem solid #dfdfdf;
+  outline: none;
+}
+body .modal .modal-container .cta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: start;
+}
+body .modal .modal-container .cta button {
+  margin: 0 2rem 0 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0.8rem 3rem;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+}
+body .modal .modal-container .cta button:nth-child(1) {
+  background-color: #FF6363;
+  color: #fff;
+  border-radius: 4px;
+}
+body .modal .modal-container .cta button:nth-child(2) {
+  background-color: #FF6363;
+  color: #000;
+  background-color: transparent;
+}
+    </style>	
+</head>
 	<body>
 		<header class="theame-header fixed-top">
 			<section class="tp-header">
@@ -301,25 +591,25 @@
 		  <!--<p>Fill the form below and one of our agents will reach out to you soon.</p>-->
 		 
 		      <ul id="abhi" style=" margin: 30px;">
-		         	<li><a href="/web/20250328101832/https://smrealestate.ae/who_we_are/" class="abhi_text_white">Who We Are </a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/contact/" class="abhi_text_white">Contact Us</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/review/" class="abhi_text_white">Reviews</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/our_team/" class="abhi_text_white">Our Team</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/blog/" class="abhi_text_white">Blog</a></li>
-		                	<li><a href="/web/20250328101832/https://smrealestate.ae/contact/" class="abhi_text_white">Sell</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/buy_properties/" class="abhi_text_white">Buy</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/rent_properties/" class="abhi_text_white">Rent</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/off_plan/" class="abhi_text_white">Off Plan</a></li>
-							<li><a href="/web/20250328101832/https://smrealestate.ae/privacy_policy/" class="abhi_text_white">Privacy Policy</a></li>
+		         	<li><a href="https://smrealestate.ae/who_we_are/" class="abhi_text_white">Who We Are </a></li>
+							<li><a href="https://smrealestate.ae/contact/" class="abhi_text_white">Contact Us</a></li>
+							<li><a href="https://smrealestate.ae/review/" class="abhi_text_white">Reviews</a></li>
+							<li><a href="https://smrealestate.ae/our_team/" class="abhi_text_white">Our Team</a></li>
+							<li><a href="https://smrealestate.ae/blog/" class="abhi_text_white">Blog</a></li>
+		                	<li><a href="https://smrealestate.ae/contact/" class="abhi_text_white">Sell</a></li>
+							<li><a href="https://smrealestate.ae/buy_properties/" class="abhi_text_white">Buy</a></li>
+							<li><a href="https://smrealestate.ae/rent_properties/" class="abhi_text_white">Rent</a></li>
+							<li><a href="https://smrealestate.ae/off_plan/" class="abhi_text_white">Off Plan</a></li>
+							<li><a href="https://smrealestate.ae/privacy_policy/" class="abhi_text_white">Privacy Policy</a></li>
 							
 							
 		      </ul>
 		 
 		      <ul id="abhi">
-										<li><a class="social_abhi" href="https://web.archive.org/web/20250328101832/https://www.facebook.com/profile.php?id=61553317149078" target="_blank"><i class="fab fa-facebook me-2"></i></a></li>
-										<li><a class="social_abhi" href="https://web.archive.org/web/20250328101832/https://www.instagram.com/smrealestate.ae/" target="_blank"><i class="fab fa-instagram me-2"></i></a></li>
-										<li><a class="social_abhi" href="https://web.archive.org/web/20250328101832/https://www.youtube.com/channel/UCAuSZIaw7UCMJMtTm2K4WWw" target="_blank"><i class="fab fa-youtube me-2"></i></a></li>
-										<li><a class="social_abhi" href="https://web.archive.org/web/20250328101832/https://www.linkedin.com/company/modarealestate/" target="_blank"><i class="fab fa-linkedin-in me-2"></i></a></li>
+										<li><a class="social_abhi" href="https://www.facebook.com/profile.php?id=61553317149078" target="_blank"><i class="fab fa-facebook me-2"></i></a></li>
+										<li><a class="social_abhi" href="https://www.instagram.com/smrealestate.ae/" target="_blank"><i class="fab fa-instagram me-2"></i></a></li>
+										<li><a class="social_abhi" href="https://www.youtube.com/channel/UCAuSZIaw7UCMJMtTm2K4WWw" target="_blank"><i class="fab fa-youtube me-2"></i></a></li>
+										<li><a class="social_abhi" href="https://www.linkedin.com/company/modarealestate/" target="_blank"><i class="fab fa-linkedin-in me-2"></i></a></li>
 									</ul>
 		 
 		</div>
@@ -336,7 +626,7 @@
 				</div>
 			</section>
 			<div class="fx-icon">
-				<a href="https://web.archive.org/web/20250328101832/https://wa.me/+971569830326" class="fx-icon-whatsapp" target="_blank">
+				<a href="https://wa.me/+971569830326" class="fx-icon-whatsapp" target="_blank">
 				<i class="fab fa-whatsapp"></i></a>
 			</div>
 			<!--<p>SM Super Moda Real estate ©2023  Developed and designed By Object Square</p>-->
