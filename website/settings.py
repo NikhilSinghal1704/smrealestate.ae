@@ -33,7 +33,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['*','195.35.23.153','https://smrealestate.ae']
-CSRF_TRUSTED_ORIGINS = ['https://smrealestate.ae','https://smrealestate.ae']
+CSRF_TRUSTED_ORIGINS = ['https://smrealestate.ae','https://smrealestate.ae', 'https://smrealestate.nik-server.in']
 
 
 
