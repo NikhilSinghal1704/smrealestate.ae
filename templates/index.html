@@ -50,18 +50,19 @@
 				<i class="fas fa-building new_icon_size"></i><br>Commercial<br>Properties
 			  </button>
 			</div>
-		  <form id="searchForm" method="get" action="/property_search/None/">
+		  
+			<form id="searchForm" method="get" action="/property_search/None/">
   <input type="hidden" name="selected_type" id="selected_type" value="None">
 
   <div class="search-bar" style="padding: 60px 20px 20px; background: #242b34c9; border-radius:13px;">
     
-    <div style="justify-content: center; display: flex; width: 100%; max-width: 900px; margin: auto;">
+    <div style="justify-content: center;display: flex;width: 100%;max-width: 900px;margin: auto;">
       
       <input type="text" name="location" id="location"
         placeholder='Search by Location "Downtown"'
         style="flex: 2; border: 1px solid black; border-right: none; border-radius: 10px 0 0 10px; padding: 10px;">
       
-      <select name="budget_range" id="budget_range" 
+      <select name="budget_range" id="budget_range"
         style="flex: 1; border: 1px solid black; border-left: none; border-right: none; padding: 10px;">
         <option value="" disabled selected>Budget Range</option>
         <option value="0-1000000">Up to 1M (AED)</option>
@@ -70,14 +71,13 @@
       </select>
       
       <button class="btn thm-btn" type="submit"
-        style="margin: 0;flex: 0.8; font-size: 15px; border: 1px solid black; border-left: none; border-radius: 0 10px 10px 0; background-color: #c2a673; color: white; padding: 10px;">
+        style="margin:0;flex: 0.8; font-size: 15px; border: 1px solid black; border-left: none; border-radius: 0 10px 10px 0; background-color: #c2a673; color: white; padding: 10px;">
         <i class="fa fa-search"></i> Search
       </button>
     
     </div>
   </div>
 </form>
-
 		  </div>
 		  
 		  <script>
@@ -226,7 +226,7 @@
 			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
 				<div class="product-innr">
 					<div class="product-img">
-						<a href="properties_details/{{x.pk}}"><img src="{{x.photo.url}}" alt=""></a>
+						<a href="properties_details/{{x.pk}}"><img src="{{x.display_images.url}}" alt=""></a>
 					</div>
 					<div class="product-content">
 						<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
