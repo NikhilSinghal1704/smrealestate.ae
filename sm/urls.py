@@ -67,6 +67,13 @@ urlpatterns = [
 
 
 
+    ##Ranjeet
+    
+    path('property_search/',GetDesiredProperty,name="getDesiredProperty"),
+    path('agent-contact-form/',agentContactFormView,name="agent-contact-form"),
+
+
+
 
 
     path('dashboard/index/', AdminIndexView.as_view(), name = "adminindex"),

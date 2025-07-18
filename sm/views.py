@@ -56,7 +56,14 @@ class IndexView(View):
         return render(request, 'index.html', context)
     
 
-    def post(self,request):
+    
+
+
+##Ranjeet
+def agentContactFormView(request):
+    if request.method=='POST':
+
+        print("AgentContact form called!!")
         template_name = 'index.html'
         form = ContactForm(request.POST)
         if form.is_valid():
