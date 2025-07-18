@@ -33,15 +33,15 @@ title>{% block title %}SM- Properties-Details{% endblock %}</title>
                             <div class="row">
                                 <div class="col-lg-8 col-md-6 col-sm-6 col-12">
                                     <div class="property-filter-lft">
-                                        <h5 id ="crate">{{target_currency}}  {{ convet_rate }} </h5>
-                                        <div>
+                                        <h5 id ="crate">{{target_currency}}  {{ convet_rate }} {{properties.rate}} AED</h5>
+                                        <!-- <div>
                                             <select name="currencyrate" id= "currencyrate"  class="form-select" data-id="{{properties.id}}">
                                                 <option  value="EUR">EUR</option>
                                                 <option  value="AUD">AUD</option>
                                                 <option  value="AED">AED</option>
                                                 <option  selected  value="INR">INR</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-end">
@@ -295,7 +295,7 @@ title>{% block title %}SM- Properties-Details{% endblock %}</title>
 									<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 										<div class="product-innr">
 											<div class="product-img">
-												<a href="/properties_details/{{x.pk}}/"><img src="{{x.photo.url}}" alt=""></a>
+												<a href="/properties_details/{{x.pk}}/"><img src="{{x.display_images.url}}" alt=""></a>
 											</div>
 											<div class="product-content">
 												<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
