@@ -31,47 +31,59 @@
 {% block body %}
 
 <section class="bannr-home">
-  <div class="banner">
+  	<div class="banner">
 	
-        <div class="banner-content">
-            <h1 style="color:black;">Real Estate Made Real Easy</h1>
-            <div class="tabs" style="z-index: 1; position: relative; margin-bottom: -45px; ">
-                
-                <a href="/selector/Buy/"><button class="tab " onclick="showTab('buy-properties')">
-                    <i class="fa fa-home new_icon_size" aria-hidden="true"></i><br>Buy<br>Properties
-                </button></a>
-                <a href="/selector/Rent/"><button class="tab " onclick="showTab('rent-properties')">
-                    <i class="fa fa-bed new_icon_size" aria-hidden="true"></i><br>Rent<br>Properties
-                </button></a>
-                <a href="/selector/Plots/"><button class="tab " onclick="showTab('plot-land')">
-                    <i class="fas fa-dollar-sign new_icon_size"></i><br>Plot<br>or Land
-                </button></a>
-                <a href="/selector/Offices/"><button class="tab " onclick="showTab('commercial-properties')">
-                    <i class="fas fa-building new_icon_size"></i><br>Commercial<br>Properties
-                </button></a>
-             
-            </div>
-            <form method="post" action="/property_search/None/">
-                    <input type="hidden" name="csrfmiddlewaretoken" value="ojDk6thpMDfBQMk8D4RKWx5H0CXgB0OxA8skGiCEaoQlzyzPZS5hRc9kxjIesNDe">
-                <div class="search-bar" style="padding: 60px 20px 20px; background: #242b34c9; border-radius:13px;">
-                
-                    <input type="text" name="location" id="location" placeholder="Search by Location &quot;Downtown&quot;" style="width: 100%; border-radius: 10px 0 0 10px; border: 1px solid black;">
-                    <select name="budget_range" id-"budget_range"="" style="border-radius: 0 10px 10px 0; border: 1px solid black; border-left: none;">
-                        <option value="" disabled="" selected="">Budget Range</option>
-            
-                        
-                            <option value="None-1000000">Upto 1M (AED)</option>
-                            <option value="1000000-7000000">1M - 7M (AED)</option>
-                            <option value="7000000-None">7M+ (AED)</option>
-                        
-                    </select>
-                    <button class="btn thm-btn" id="btn" type="submit" style="font-size: 15px;">
-                        <i class="fa fa-search" aria-hidden="true"></i> Search
-                    </button>
-                
-                </div>
-            </form>
-        </div>
+		<div class="banner-content">
+			<h1 style="color:black;">Real Estate Made Real Easy</h1>
+		  
+			<div class="tabs" style="position: relative; margin-bottom: -45px;">
+			  <button type="button" class="tab" data-type="sell" onclick="selectTab(this)">
+				<i class="fa fa-home new_icon_size"></i><br>Sell<br>Properties
+			  </button>
+			  <button type="button" class="tab" data-type="rent" onclick="selectTab(this)">
+				<i class="fa fa-bed new_icon_size"></i><br>Rent<br>Properties
+			  </button>
+			  <button type="button" class="tab" data-type="plot" onclick="selectTab(this)">
+				<i class="fas fa-dollar-sign new_icon_size"></i><br>Off Plan<br>Properties
+			  </button>
+			  <button type="button" class="tab" data-type="commercial" onclick="selectTab(this)">
+				<i class="fas fa-building new_icon_size"></i><br>Commercial<br>Properties
+			  </button>
+			</div>
+		  
+			<form id="searchForm" method="get" action="/property_search/None/">
+			  <input type="hidden" name="selected_type" id="selected_type" value="None">
+			  <div class="search-bar" style="padding: 60px 20px 20px; background: #242b34c9; border-radius:13px;"></div>
+			  	<input type="text" name="location" id="location" placeholder='Search by Location "Downtown"' style="width: 100%; border-radius: 10px 0 0 10px; border: 1px solid black;">
+			  	<select name="budget_range" id="budget_range" style="border-radius: 0 10px 10px 0; border: 1px solid black; border-left: none;">
+					<option value="" disabled selected>Budget Range</option>
+					<option value="0-1000000">Up to 1M (AED)</option>
+					<option value="1000000-7000000">1M - 7M (AED)</option>
+					<option value="7000000-None">7M+ (AED)</option>
+			  	</select>
+			  	<button class="btn thm-btn" type="submit" style="font-size: 15px;">
+					<i class="fa fa-search"></i> Search
+			  	</button>
+			  </div>
+			</form>
+		  </div>
+		  
+		  <script>
+			function selectTab(button) {
+			  // Remove active style from siblings
+			  document.querySelectorAll(".tabs .tab").forEach(t => t.classList.remove("active"));
+			  button.classList.add("active");
+		  
+			  // Update hidden field and form action
+			  const type = button.getAttribute("data-type");
+			  document.getElementById("selected_type").value = type;
+			  document.getElementById("searchForm").action = `/property_search/${type}/`;
+			}
+		  
+			// Optional: set default active tab
+			selectTab(document.querySelector(".tabs .tab[data-type='buy']"));
+		  </script>
+
     </div>
 </section>
 <section class="product-sec off-plan tp-space">

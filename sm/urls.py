@@ -62,6 +62,7 @@ urlpatterns = [
     path('currency_convert/<int:pk>', currency_convert , name ="cc"),
     path('off_plan/<str:property_location>/' , Locationvia, name = "loactionvia"),
     path('popular_area/', PopularAreaView.as_view(), name = "popular_area"),
+    path("property_search/<str:property_type>/", property_search, name="property_search"),
     # path('<str:property_location>/<str:title>/', Titlevia, name = "namevia"),
 
 
