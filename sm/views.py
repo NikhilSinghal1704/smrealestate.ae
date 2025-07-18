@@ -864,18 +864,27 @@ class PropertiesListView(View):
 class AddOffPlanePropertiesView(View):
     def get(self, request):
         form = OffPlanePropertiesForm() 
-        return render(request, 'dashboard/add_off_plane.html' ,{'form':form})
+        return render(request, 'dashboard/add_off_plane.html', {'form': form})
 
     def post(self, request):
         form = OffPlanePropertiesForm(request.POST, request.FILES)
+
+        images_list = request.FILES.getlist('photo')  # multiple images from HTML field
+
         if form.is_valid():
-            form.save()
+            property_obj = form.save()
+
+            # Save related property images
+            for f in images_list:
+                OffPlanePropertyImages.objects.create(photo=f, property_img=property_obj)
+
             messages.success(request, 'Form submitted successfully!')
-            return  HttpResponseRedirect('/dashboard/add_offplane_properties/')
+            return HttpResponseRedirect('/dashboard/add_offplane_properties/')
         else:
-            form = PropertiesForm()
-            messages.warning(request, 'Form not submitted , Please check fields !')
-        return render(request, 'dashboard/add_off_plane.html' , {'form':form })
+            messages.warning(request, 'Form not submitted, Please check fields!')
+
+        return render(request, 'dashboard/add_off_plane.html', {'form': form})
+
 
 
 @method_decorator(login_required, name='dispatch')
@@ -1320,7 +1329,27 @@ class OffPlanePropertiesUpdateView(UpdateView):
     model = OffPlaneProperties
     template_name = 'dashboard/off_plan_update.html'
     fields ="__all__"
-    success_url = reverse_lazy('off_plane_list') 
+    success_url = reverse_lazy('off_plane_list')
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.save()
+        images_list = self.request.FILES.getlist('photo')
+        for f in images_list:
+            OffPlanePropertyImages.objects.create(photo=f, property_img=self.object)
+
+        messages.success(self.request, 'Form submitted successfully!')
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.object.pk
+        pro_images = OffPlanePropertyImages.objects.filter(property_img = pk)
+        
+        context['pro_images'] = pro_images
+        return context
 
     
 @method_decorator(login_required, name='dispatch')
