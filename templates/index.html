@@ -98,7 +98,7 @@
 			selectTab(document.querySelector(".tabs .tab[data-type='buy']"));
 		  </script>
     </div>
-</section> {% endcomment %}
+</section> 
 <section class="product-sec off-plan tp-space">
 	<div class="container">
 		<div class="heading justify-content-between align-items-center prohead mb-3">
@@ -865,21 +865,6 @@
 <!--</section>-->
 
 
-
-
-<script>
-  function selectTab(tabId) {
-    // Unselect all
-    document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active-tab"));
-
-    // Select clicked one
-    const input = document.getElementById(tabId);
-    if (input) {
-      input.checked = true;
-      input.nextElementSibling.querySelector("button").classList.add("active-tab");
-    }
-  }
-</script>
 
 
 
