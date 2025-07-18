@@ -28,7 +28,14 @@
 		 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css">
   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+		 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 		<style>
+		
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, li, label, input, textarea {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 			.tdStyle
 			{
 			background-image:url('{{ STATIC_URL }}images/sample.JPG');
@@ -88,7 +95,7 @@ h1 {
 }
 
 .tab:hover, .tab.active {
-    background: #c1a177;
+    background: #8b6439;
 }
 
 .search-bar {
@@ -115,7 +122,7 @@ h1 {
 }
 
 .search-bar button {
-    background: #C1a177;
+    background: #8b6439;
     color: #fff;
     cursor: pointer;
     transition: background 0.3s;
@@ -160,7 +167,7 @@ body {
     padding: 10px;}
     
  .social_abhi   {
-    color: #c1a177;
+    color: #8b6439;
     font-size: 35px;
     margin: 15px;
 }
@@ -243,7 +250,7 @@ body .modal {
 body .modal .bg {
   height: 35rem;
   width: 35rem;
-  background-color: #c1a177;
+  background-color: #8b6439;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -332,13 +339,13 @@ body .modal .modal-container .cta button:nth-child(2) {
 }
 .ftr_addrass {
     text-align: center;
-    border-right: 1px solid #c1a177;
+    border-right: 1px solid #8b6439;
 }
 .ftr_addrass img {
     height: 55px;
     width: 55px;
     border-radius: 50px;
-    border: 2px solid #c1a177;
+    border: 2px solid #8b6439;
 }
 .ftr_addrass h5 {
   font-size: 18px;
@@ -349,7 +356,7 @@ body .modal .modal-container .cta button:nth-child(2) {
 }
 
 /* TEam Start */
-
+/* 
 .team-wrapper {
   display: flex;
   flex-direction: column;
@@ -398,6 +405,92 @@ body .modal .modal-container .cta button:nth-child(2) {
   margin-top: 10px;
   color: green;
   text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+  .team-section,
+  .team-section.reverse {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .team-image img {
+    max-width: 100%;
+  }
+} */
+ .team-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 50px 5%;
+}
+
+.team-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.team-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.team-image,
+.team-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.team-image img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.team-content {
+  padding: 20px;
+  color: #fff; /* adjust based on background */
+}
+
+.team-content h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.team-content h3 {
+  font-size: 20px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.team-content p {
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.team-content a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #25D366;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .team-section,
+  .team-section.reverse {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .team-image,
+  .team-content {
+    max-width: 100%;
+  }
+
+  .team-content {
+    padding: 0;
+  }
 }
 
     </style>	
@@ -824,7 +917,7 @@ function showTab(tabId) {
                 <i class="fas fa-times" id="close1"></i>
             </div>
             <div class="modal-body">
-                <span style=" color: #c1a177; font-size: 2.5rem;">Get In Touch</span>
+                <span style=" color: #8b6439; font-size: 2.5rem;">Get In Touch</span>
                
             </div>
             
@@ -844,7 +937,7 @@ function showTab(tabId) {
                 </div>
     
                 <div class="cta">
-                    <button class="btn thm-btn" style="display: inline-block; padding: 10px 20px; border-radius: 6px; border: 1px solid #c1a177; background: #383838; font-size: 15px; color: #c1a177; font-weight: 600; transition: 0.3s; background: transparent; text-transform: capitalize;" type="submit">Submit</button>
+                    <button class="btn thm-btn" style="display: inline-block; padding: 10px 20px; border-radius: 6px; border: 1px solid #8b6439; background: #383838; font-size: 15px; color: #8b6439; font-weight: 600; transition: 0.3s; background: transparent; text-transform: capitalize;" type="submit">Submit</button>
                 </div>
             </form>
 
