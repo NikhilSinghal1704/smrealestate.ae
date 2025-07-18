@@ -66,6 +66,58 @@ class IndexView(View):
             form = ContactForm()
         return render(request, template_name , {'form':form})
     
+# Nikhil
+def property_search(request, property_type=None):
+    location = request.GET.get('location')
+    budget_range = request.GET.get('budget_range')
+    selected_type = request.GET.get('selected_type')  # 'rent', 'sell', 'offices', etc.
+
+    # Start with all active properties
+    qs = Property.objects.filter(status=1)
+
+    # Filter by location (case-insensitive contains)
+    if location:
+        qs = qs.filter(property_location__icontains=location)
+
+    # Filter by budget range: "<low>-<high>"
+    if budget_range:
+        low, high = budget_range.split('-', 1)
+        if low:
+            qs = qs.filter(rate__gte=int(low))
+        if high != 'None':
+            qs = qs.filter(rate__lte=int(high))
+
+    # Filter by tab type
+    if selected_type == 'rent':
+        qs = qs.filter(rent='Rent')
+    elif selected_type in ('sell'):
+
+        qs = Property.objects.filter(
+            Q(rent='Sell') | Q(rent='Buy')
+        )
+
+    elif selected_type == 'offices':
+        # For offices, ignore Rent/Buy; filter by property_type
+        qs = qs.filter(property_type='Offices')
+    
+
+    # Convert to paginated queryset (if needed)
+    # Example:
+    # from django.core.paginator import Paginator
+    # page = request.GET.get('page', 1)
+    # paginator = Paginator(qs, 9)
+    # properties = paginator.get_page(page)
+
+    # For now, just return the filtered QuerySet as a context dict
+    context = {
+        'properties': qs,  
+        'location': location if location else 'Dubai',
+        'budget_range': budget_range,
+        'selected_type': selected_type,
+    }
+
+    return render(request, 'property_search.html', context)
+    
 class AboutView(View):
     def get(self,request):
         about  =CMS.objects.all()
