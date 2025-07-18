@@ -56,7 +56,14 @@ class IndexView(View):
         return render(request, 'index.html', context)
     
 
-    def post(self,request):
+    
+
+
+##Ranjeet
+def agentContactFormView(request):
+    if request.method=='POST':
+
+        print("AgentContact form called!!")
         template_name = 'index.html'
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -65,6 +72,24 @@ class IndexView(View):
         else:
             form = ContactForm()
         return render(request, template_name , {'form':form})
+    
+
+    
+
+
+
+def GetDesiredProperty(request):
+    if request.method == "POST":
+        property_type = request.POST.get("property_type")
+        location = request.POST.get("location")
+        budget_range = request.POST.get("budget_range")
+
+        # Now use these values to query your DB or logic
+        ...
+
+
+
+
     
 class AboutView(View):
     def get(self,request):
