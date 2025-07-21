@@ -7,13 +7,16 @@
 </style>
 {% block body %}
 
-<section class="bannr-sec agent-abnner">
+<section class="blog-sec space pb-0">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="bannr-content text-center">
-          <h1 class="text-white">SM REAL ESTATE</h1>
-          <h6>NEW HOMES FOR GENERATION</h6>
+    <div class="blog-sec-innr">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="blog-content">
+            <h1>Our Team</h1>
+            <p>New Homes For Generations</p>
+            <p style="color:grey;font-size: 12px;"><a href="https://smrealestate.ae/" style="color:grey;">Home</a> &gt; Our Team</p>
+          </div>
         </div>
       </div>
     </div>
@@ -42,9 +45,13 @@
           <h3>{{ x.position }}</h3>
          
           <p>{{ x.desc|default:"" }}</p> <!-- Optional: Add a description field -->
-          <a href="https://wa.me/{{ x.whatsapp_number }}" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp
+         
+          <a href="/agents_details/{{x.pk}}/" class="thm-btn btn">
+            Know More
           </a>
+         
+          
+
         </div>
       </div>
     {% endif %}
