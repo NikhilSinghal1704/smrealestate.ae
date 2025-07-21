@@ -863,25 +863,26 @@ class PropertiesListView(View):
 @method_decorator(login_required, name='dispatch')
 class AddOffPlanePropertiesView(View):
     def get(self, request):
-        form = OffPlanePropertiesForm() 
+        form = OffPlanePropertiesForm()
         return render(request, 'dashboard/add_off_plane.html', {'form': form})
 
     def post(self, request):
         form = OffPlanePropertiesForm(request.POST, request.FILES)
-
-        images_list = request.FILES.getlist('photo')  # multiple images from HTML field
+        images_list = request.FILES.getlist('photo')  # handle multiple image uploads
 
         if form.is_valid():
             property_obj = form.save()
 
-            # Save related property images
+            # Save additional images (if any)
             for f in images_list:
                 OffPlanePropertyImages.objects.create(photo=f, property_img=property_obj)
 
             messages.success(request, 'Form submitted successfully!')
-            return HttpResponseRedirect('/dashboard/add_offplane_properties/')
+            return redirect('off_plane_list')  # or your desired URL pattern name
         else:
-            messages.warning(request, 'Form not submitted, Please check fields!')
+            # Print errors to console for debug
+            print(form.errors)
+            messages.warning(request, 'Form not submitted, please check the fields.')
 
         return render(request, 'dashboard/add_off_plane.html', {'form': form})
 
@@ -1327,28 +1328,26 @@ class CMSUpdateView(UpdateView):
 @method_decorator(login_required, name='dispatch')
 class OffPlanePropertiesUpdateView(UpdateView):
     model = OffPlaneProperties
+    form_class = OffPlanePropertiesForm
     template_name = 'dashboard/off_plan_update.html'
-    fields ="__all__"
     success_url = reverse_lazy('off_plane_list')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.save()
+        form.save_m2m()
+
+        # Save uploaded multiple images
         images_list = self.request.FILES.getlist('photo')
         for f in images_list:
             OffPlanePropertyImages.objects.create(photo=f, property_img=self.object)
 
-        messages.success(self.request, 'Form submitted successfully!')
+        messages.success(self.request, 'Form updated successfully!')
         return HttpResponseRedirect(self.get_success_url())
-
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        pk = self.object.pk
-        pro_images = OffPlanePropertyImages.objects.filter(property_img = pk)
-        
-        context['pro_images'] = pro_images
+        context['pro_images'] = OffPlanePropertyImages.objects.filter(property_img=self.object)
         return context
 
     
