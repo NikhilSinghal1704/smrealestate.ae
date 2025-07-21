@@ -2094,12 +2094,13 @@ overflow-x: hidden;
 }
 
 .blog-sec-innr {
-	background-image: url(../images/blog-bannr.png);
+	/* background-image: url(../images/blog-bannr.png);
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 530px;
+	height: 530px; */
+	background-color: #000;
 	border-radius: 20px;
-	padding: 50px 50px 0 50px;
+	padding: 50px 50px 50px 50px;
 }
 
 .blog-sec-innr .blog-content h1 {
@@ -2268,8 +2269,10 @@ overflow-x: hidden;
 
 .service-bnnr-img img {
 	width: 100%;
-	margin-bottom: 1rem;
-	border-radius: 10px;
+    height: 250px;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .service-bnnr-cntnt h4 {
