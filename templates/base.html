@@ -31,7 +31,11 @@
 		 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 		<style>
-		
+		 @media (max-width: 576px) {
+    .search-btn span {
+      display: none;
+    }
+  }
 body, h1, h2, h3, h4, h5, h6, p, span, a, button, li, label, input, textarea {
   font-family: 'Poppins', sans-serif !important;
 }
@@ -719,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	 <div class="row align-items-center">
 									<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 										<div class="ftr_addrass">
-										    <img src="/web/20250328102524im_/https://smrealestate.ae/media/aamohan/images/russia-flag.png" alt="">
+										    <img src="{% static 'assets/images/russia-flag.png' %}" alt="">
 											<h5>Russia</h5>
 											<p class="mb-0 ftr_addrass">
 											    <ul style="padding: 0px 30px;">
@@ -732,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 										<div class="ftr_addrass ">
-											<img src="/web/20250328102524im_/https://smrealestate.ae/media/aamohan/images/poland-flag.png" alt="">
+											<img src="{% static 'assets/images/poland-flag.png' %}" alt="">
 											<h5>Poland</h5>
 											<p class="mb-0 ftr_addrass">
 											    <ul style="padding: 0px 30px;">
@@ -745,7 +749,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 										<div class="ftr_addrass border-0">
-											<img src="/web/20250328102524im_/https://smrealestate.ae/media/aamohan/images/dubai-flag.png" alt="">
+											<img src="{% static 'assets/images/dubai-flag.png' %}" alt="">
 											<h5>UAE</h5>
 											<p class="mb-0 ftr_addrass">
 											    <ul style="padding: 0px 30px;">

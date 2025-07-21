@@ -28,6 +28,31 @@
       "url": "https://smrealestate.ae/en/" 
     }
     </script>
+	<style>
+  /* .search-btn {
+    margin: 0;
+    flex: 0.8;
+    font-size: 15px;
+    border: 1px solid black;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    background-color: #c69f6c;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  } */
+
+  /* Hide text on small screens */
+  /* @media (max-width: 576px) {
+    .search-btn span {
+      display: none;
+    }
+  } */
+</style>
+
 {% block body %}
 
 
@@ -65,18 +90,19 @@
         style="flex: 2; border: 1px solid black; border-right: none; border-radius: 10px 0 0 10px; padding: 10px;">
       
       <select name="budget_range" id="budget_range"
-        style="flex: 1; border: 1px solid black; border-left: none; border-right: none; padding: 10px;">
-        <option value="" disabled selected>Budget Range</option>
+        style="flex: 1;     max-width: 200px; border: 1px solid black; border-left: none; border-right: none; padding: 10px;">
+        <option value="" disabled selected>Budget</option>
         <option value="0-1000000">Up to 1M (AED)</option>
         <option value="1000000-7000000">1M - 7M (AED)</option>
         <option value="7000000-None">7M+ (AED)</option>
       </select>
       
-      <button class="btn thm-btn" type="submit"
+      <button class="btn thm-btn search-btn" type="submit"
         style="margin:0;flex: 0.8; font-size: 15px; border: 1px solid black; border-left: none; border-radius: 0 10px 10px 0; background-color: #c69f6c; color: white; padding: 10px;">
-        <i class="fa fa-search"></i> Search
+        <i class="fa fa-search"></i>  <span>Search</span>
       </button>
-    
+	  
+
     </div>
   </div>
 </form>
