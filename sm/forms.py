@@ -53,6 +53,7 @@ class PropertiesForm(forms.ModelForm):
 
 
 class OffPlanePropertiesForm(forms.ModelForm):
+
     class Meta:
         model = OffPlaneProperties
         fields = "__all__"

@@ -65,8 +65,12 @@
                 <tbody>
                   {% for x in properties %}
                   <tr>
-                    <td>{{x.pk}}</td>                      
-                    <td><img class="img-50" src="{{x.images.url}}" alt=""></td>
+                    <td>{{x.pk}}</td>
+                    {% if x.display_images %}                      
+                    <td><img class="img-50" src="{{x.display_images.url}}" alt=""></td>
+                    {% else %}
+                    <td><img class="img-50" src="{% static 'images/placeholder.png' %}" alt=""></td>
+                    {% endif %}
                     <td>{{x.name}}</td>
                     <td>{{x.locations}}</td>
                     <th>{{x.price_valid}}</th>

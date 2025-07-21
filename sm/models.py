@@ -6,6 +6,7 @@ from django.core.validators import FileExtensionValidator
 from django.contrib.postgres.fields import ArrayField
 from django.core.validators import FileExtensionValidator
 from PIL import Image
+from multiselectfield import MultiSelectField
 
 def validate_image(image):
     # Validate if the uploaded file is an image
@@ -158,6 +159,7 @@ class PopularArea(models.Model):
         (1, 'Active'),
         (0, 'Inactive'),
     )
+
     images = models.FileField()
     name = models.CharField(max_length=155)
     price_from = models.IntegerField()
@@ -169,7 +171,17 @@ class OffPlaneProperties(models.Model):
         (1, 'Active'),
         (0, 'Inactive'),
     )
-    images = models.FileField()
+
+    Type_Pro = [
+        ('Apartments','Apartments'),
+        ('villa', 'villa'),
+        ('Penthouses', 'Penthouses'),
+        ('Townhouses', 'Townhouses'),
+        ('Duplexes', 'Duplexes'),
+        ('Plots', 'Plots'),
+        ('Offices', 'Offices')
+    ]
+
     name = models.CharField(max_length=155)
     locations = models.CharField(max_length=155)
     status = models.IntegerField(choices=STATUS_CHOICES , default=1)
@@ -183,10 +195,22 @@ class OffPlaneProperties(models.Model):
     status_of_project = models.CharField(max_length=155, blank= True , null= True)
     units = models.CharField(max_length= 155 , blank= True , null= True) 
     developer = models.CharField(max_length= 155 , blank= True , null= True) 
-    payment_plan = models.CharField(max_length=155 , blank= True , null= True) 
+    payment_plan = models.CharField(max_length=155 , blank= True , null= True)
+    property_type = MultiSelectField(choices=Type_Pro, max_length=255)
+    display_images = models.FileField(max_length=100,  blank=True, null=True , upload_to="display/", validators=[
+        FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif']),
+        validate_image,  # Custom image validation function
+    ])
 
     def __str__(self):
         return self.name
+    
+class OffPlanePropertyImages(models.Model):
+    photo = models.FileField(max_length=100,null=True,blank=True, upload_to="documents/" ,  validators=[
+        FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif']),
+        validate_image,  # Custom image validation function
+    ])
+    property_img = models.ForeignKey(OffPlaneProperties,related_name="property_image", on_delete=models.CASCADE,  null=True,blank=True)
 
 
 class FlatPlan(models.Model):

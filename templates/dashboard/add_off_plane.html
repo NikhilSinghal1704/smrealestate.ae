@@ -128,12 +128,34 @@
                   <div class="valid-feedback">Looks good!</div>
                 </div>
 
+                <div class="col-md-6">
+                  <label class="form-label" for="id_specialization">property_type</label>
+                  <select name = "property_type"  class="form-select" required id="id_specialization">
+                    <option value="" selected>---------</option>
+                    <option value="Apartments">Apartments</option>                  
+                    <option value="villa">villa</option>                  
+                    <option value="Penthouses">Penthouses</option>
+                    <option value="Townhouses">Townhouses</option>
+                    <option value="Duplexes">Duplexes</option>                  
+                    <option value="Plots">Plots</option>
+                    <option value="Offices">Offices</option>
+                </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
                 
 
                 
                 <div class="col-md-6">
                   <label class="form-label" for="img-input">Properties Image</label>
-                  <input class="form-control" type="file" name="images"  id="img-input">
+                  <input class="form-control" type="file" name="photo" multiple  id="imageInput">
+                  <!-- <img class="img-100" id="display-img"/> -->
+                  <div class="d-flex" id ="imagePreview"></div>
+                  <div class="valid-feedback">{{error}}Looks good!</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="img-input">Display Properties Image</label>
+                  <input class="form-control" type="file" name="display_images"  id="img-input">
                   <img class="img-100" id="display-img"/>
                   <div class="valid-feedback">Looks good!</div>
                 </div>
