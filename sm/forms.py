@@ -53,10 +53,14 @@ class PropertiesForm(forms.ModelForm):
 
 
 class OffPlanePropertiesForm(forms.ModelForm):
-
     class Meta:
         model = OffPlaneProperties
         fields = "__all__"
+        widgets = {
+            'property_type': forms.CheckboxSelectMultiple(),
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'location_description': forms.Textarea(attrs={'rows': 4}),
+        }
 
 class PopularAreaForm(forms.ModelForm):
     class Meta:
