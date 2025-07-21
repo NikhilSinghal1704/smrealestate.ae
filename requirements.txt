@@ -13,8 +13,9 @@ click-repl==0.3.0
 Django==4.1.13
 django-environ==0.11.2
 django-google-analytics-app==6.0.0
+django-multiselectfield==1.0.1
 djangorestframework==3.13.1
-ez-setup==0.9
+ez_setup==0.9
 forex-python==1.8
 idna==3.4
 kombu==5.3.4
