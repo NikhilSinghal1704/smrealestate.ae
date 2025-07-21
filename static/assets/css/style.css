@@ -1065,9 +1065,9 @@ display: none;
 }
 
 .product-sec {
-	background-image: url(../images/product-bg.png);
+	/* background-image: url(../images/product-bg.png);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .product-tabs.nav {
