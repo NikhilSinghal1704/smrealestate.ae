@@ -4,18 +4,22 @@
 {% block body %}
 
 
- <section class="bannr-sec property-bnner">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-8 col-md-12 col-sm-12">
-				<div class="bannr-content text-center">
-					<h1 class="text-white">Real estate Properties in Dubai</h1>
-					<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used</p>
-				</div>
-			</div>
-		</div>
-	</div>
+ <section class="blog-sec space pb-0">
+  <div class="container">
+    <div class="blog-sec-innr">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="blog-content">
+            <h1>Real estate Properties in Dubai</h1>
+            <p>New Homes For Generations</p>
+            <!-- <p style="color:grey;font-size: 12px;"><a href="https://smrealestate.ae/" style="color:grey;">Home</a> &gt; Off Plan Properties</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 <section class="tp-space product-sec">
 	<div class="container">
 		{% if request.path == '/properties/' %}
@@ -53,7 +57,7 @@
 							<a href="/properties_details/{{x.pk}}/"><img src="{{x.display_images.url}}" alt=""></a>
 						</div>
 						<div class="product-content">
-							<h3 class="product-price"><span>{{x.rate}}</span> <span>AED</span></h3>
+							<h3 class="product-price"><span>{{ x.rate }}</span> <span>AED</span></h3>
 							<div class="product-amenties">
 								<span>
 									<i class="fal fa-bed me-1"></i> {{x.bedroom}}</span>

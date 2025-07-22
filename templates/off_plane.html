@@ -4,7 +4,7 @@
 {% block body %}
 
 
- <section class="bannr-sec property-bnner">
+ <!-- <section class="bannr-sec property-bnner">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-8 col-md-12 col-sm-12">
@@ -15,6 +15,22 @@
 			</div>
 		</div>
 	</div>
+</section> -->
+
+<section class="blog-sec space pb-0">
+  <div class="container">
+    <div class="blog-sec-innr">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="blog-content">
+            <h1>Real estate Off Plan Properties in Dubai</h1>
+            <p>New Homes For Generations</p>
+            <p style="color:grey;font-size: 12px;"><a href="https://smrealestate.ae/" style="color:grey;">Home</a> &gt; Off Plan Properties</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="tp-space off-plan">
 	<div class="container">
@@ -26,7 +42,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="product-innr">
 					<div class="product-img">
-						<img src="{{x.images.url}}" alt="">
+						<img src="{{x.display_images.url}}" alt="">
 					</div>
 					<div class="off-plan-content">
 						<h5><a href="/off_plan/{{x.locations}}/{{x.name}}/{{x.pk}}/">{{x.name}}</a></h5>

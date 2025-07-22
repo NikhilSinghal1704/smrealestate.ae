@@ -2096,7 +2096,7 @@ overflow-x: hidden;
 .blog-sec-innr {
 	/* background-image: url(../images/blog-bannr.png);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; 
 	height: 530px; */
 	background-color: #000;
 	border-radius: 20px;
